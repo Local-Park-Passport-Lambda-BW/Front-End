@@ -37,27 +37,20 @@ const StyledDiv = styled.div`
       flex-direction: column;
       font-size: 12px;
     }
-    #first-name {
+    form {
       margin-top: 9.6%;
     }
-    .terms-checkbox {
-      width: 95%;
-      margin: 0 auto;
-    }
+
     input {
       display: flex;
       flex-direction: column;
-      width: 38.2%;
+      width: 50%;
       margin: 0 auto;
       /* margin-right: 40px; */
       margin-bottom: 3px;
       text-align: center;
     }
-    input[type="checkbox"] {
-      width: 20px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
+
     /* .check {
       margin-left: 3px;
     } */
@@ -80,18 +73,22 @@ const StyledDiv = styled.div`
 `;
 
 function LoginForm(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <StyledDiv className="New-user-form">
       <h2>Log in</h2>
       <Form className="form">
         <ErrorMessage
-          name="user_name"
+          name="userName_password"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
-          Username:
-          <Field type="text" name="user_name" placeholder="Username" />
+          Username or password:
+          <Field
+            type="text"
+            name="userName_password"
+            placeholder="Username/password"
+          />
         </label>
         <ErrorMessage
           name="current_password"
@@ -115,12 +112,8 @@ function LoginForm(props) {
 const LoginFormWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      first_name: "",
-      last_name: "",
-      email: "",
-      current_password: "",
-      user_name: "",
-      terms: false
+      userName_password: "",
+      current_password: ""
     };
   },
   validationSchema: Yup.object().shape({

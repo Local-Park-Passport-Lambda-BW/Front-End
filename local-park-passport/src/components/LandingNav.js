@@ -16,26 +16,24 @@ const StyledDiv = styled.div`
   } */
 `;
 
-const LandingNav = () => {
-  return (
+const LandingNav = props => {
+  let loggedIn = true;
+  let navLinks = (
     <StyledDiv>
-      <div>
-        <Link to={`/`}>
-          <a href="">Home</a>
-        </Link>
-      </div>
-      <div>
-        <Link to={`/Login`}>
-          <a href="">Login</a>
-        </Link>
-      </div>
-      <div>
-        <Link to={`/register`}>
-          <a href="">Register</a>
-        </Link>
-      </div>
+      <Link to={`/`}>Dashboard</Link>
     </StyledDiv>
   );
+
+  if (!loggedIn) {
+    navLinks = (
+      <StyledDiv>
+        <Link to={`/`}>Home</Link>
+        <Link to={`/Login`}>Sign in</Link>
+        <Link to={`/register`}>Sign up</Link>
+      </StyledDiv>
+    );
+  }
+  return <StyledDiv>{navLinks}</StyledDiv>;
 };
 
 export default LandingNav;

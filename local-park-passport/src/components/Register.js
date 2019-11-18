@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
@@ -46,7 +46,7 @@ const StyledDiv = styled.div`
     input {
       display: flex;
       flex-direction: column;
-      width: 38.2%;
+      width: 50%;
       margin: 0 auto;
       /* margin-right: 40px; */
       margin-bottom: 3px;
@@ -77,29 +77,20 @@ const StyledDiv = styled.div`
     font-weight: 600;
   }
 `;
-
 function RegistrationForm(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <StyledDiv className="New-user-form">
-      <h2>Register</h2>
+      <h2>Sign Up</h2>
       <Form className="form">
         <ErrorMessage
-          name="first_name"
+          name="name"
           render={msg => <div className="error">{msg}</div>}
         />
-        <label id="first-name">
-          First Name:
-          <Field type="text" name="first_name" placeholder="first name" />
+        <label id="name">
+          Name:
+          <Field type="text" name="name" placeholder="Name" />
         </label>{" "}
-        <ErrorMessage
-          name="last_name"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label>
-          Last Name:
-          <Field type="text" name="last_name" placeholder="last name " />
-        </label>
         <ErrorMessage
           name="email"
           render={msg => <div className="error">{msg}</div>}
@@ -140,22 +131,8 @@ function RegistrationForm(props) {
             placeholder="Re-enter password "
           />
         </label>
-        <ErrorMessage
-          name="terms"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label className="terms-checkbox">
-          I confirm I have read and agree to the Terms of Service
-          <Field type="checkbox" name="terms" />
-        </label>
-        {/* <Field className="submit-button" type="submit" /> */}
         <button type="submit">Submit</button>
       </Form>
-      {/* <div>
-    {
-
-    }
-</div> */}
     </StyledDiv>
   );
 }
@@ -163,23 +140,18 @@ function RegistrationForm(props) {
 const RegistrationFormWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      first_name: "",
-      last_name: "",
+      name: "",
       email: "",
       current_password: "",
-      user_name: "",
-      terms: false
+      user_name: ""
     };
   },
   validationSchema: Yup.object().shape({
-    first_name: Yup.string()
+    name: Yup.string()
       .required("Please enter first name")
       .min(2, "Too Short!")
       .max(25, "Too Long!"),
-    last_name: Yup.string()
-      .required("Please enter last name")
-      .min(2, "Too Short!")
-      .max(25, "Too Long!"),
+
     email: Yup.string()
       .required("Please enter email")
       .email("Invalid email"),
@@ -195,22 +167,14 @@ const RegistrationFormWithFormik = withFormik({
     user_name: Yup.string()
       .required("user name is a required field")
       .min(3, "Too Short!")
-      .max(25, "Too Long!"),
-
-    terms: Yup.boolean().required(
-      "It is necessary to agree to terms of service to proceed with registration"
-    )
+      .max(25, "Too Long!")
   }),
 
   handleSubmit(input, tools) {
-    const list = tools.props.userList;
-    const setList = tools.props.setUserList;
-
     axios
       .post("https://reqres.in/api/users/", input)
       .then(res => {
         console.log(res.data);
-
         tools.resetForm();
       })
       .catch(err => {

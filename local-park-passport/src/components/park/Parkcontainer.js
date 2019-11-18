@@ -19,8 +19,8 @@ export default function Parks() {
   const [parks, setParks] = useState([
     {
       id: 1,
-      title: "Coldham's Common",
-      body:
+      name: "Coldham's Common",
+      description:
         "A large open shared use space with wild meadow, sports pitches and woodland.  Fully off lead"
     }
   ]);

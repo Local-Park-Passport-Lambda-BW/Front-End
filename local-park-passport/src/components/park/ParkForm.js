@@ -51,20 +51,20 @@ export default function ParkForm(props) {
   return (
     <StyledDiv>
       <form onSubmit={submitForm} className="park-form">
-        <label htmlFor="title" className="parks-label"></label>
+        <label htmlFor="name" className="parks-label"></label>
         <input
           className="parks-input label"
-          name="title"
+          name="name"
           onChange={handleChanges}
-          value={park.title}
+          value={park.name}
           placeholder="Park Name"
         />
-        <label htmlFor="body" className="parks-label "></label>
+        <label htmlFor="description" className="parks-label "></label>
         <textarea
           className="parks-textarea label"
-          name="body"
+          name="description"
           onChange={handleChanges}
-          value={park.body}
+          value={park.description}
           placeholder="Description"
         />
         <button className="parks-button">Add Park</button>

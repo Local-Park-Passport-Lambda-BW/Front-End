@@ -67,9 +67,9 @@ export default function ParksList({ parks }) {
 
           <div className="top-right-content">
             <div className="body-title">
-              <h2>{park.title}</h2>
+              <h2>{park.name}</h2>
               {/* <p>{park.id}</p> */}
-              <p>{park.body}</p>
+              <p>{park.description}</p>
               <div className="bottom-right-content">
                 <div className="stars-placeholder">*****</div>
                 <div className="open-closed-placeholder">open</div>

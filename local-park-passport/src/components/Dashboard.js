@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Route } from 'react-router-dom'
+// import { Route } from 'react-router-dom'
 
-import DashboardNav from './DashboardNav'
+import DashboardNav from "./DashboardNav";
 import ParkForm from "./park/ParkForm";
 import ParksList from "./park/ParksList";
 
@@ -33,13 +33,10 @@ export default function Dashboard() {
         return <ParkForm {...props} addNewPark={addNewPark} />
       }} /> */}
 
-
-      
       {/* we are going to pass a function down as a prop */}
       {/* <Route exact path="/dashboard/add-a-park" render={ props => {
         return <ParkForm {...props} addNewPark={addNewPark} />
       }} /> */}
-      
     </div>
   );
 }

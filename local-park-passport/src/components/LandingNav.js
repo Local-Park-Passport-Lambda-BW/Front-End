@@ -21,17 +21,17 @@ const LandingNav = () => {
     <StyledDiv>
       <div>
         <Link to={`/`}>
-          <a href="">Home</a>
+          <button>Home</button>
         </Link>
       </div>
       <div>
         <Link to={`/Login`}>
-          <a href="">Login</a>
+          <button>Sign in</button>
         </Link>
       </div>
       <div>
         <Link to={`/register`}>
-          <a href="">Register</a>
+          <button>Sign up</button>
         </Link>
       </div>
     </StyledDiv>

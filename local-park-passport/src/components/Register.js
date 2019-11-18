@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
@@ -77,7 +77,6 @@ const StyledDiv = styled.div`
     font-weight: 600;
   }
 `;
-
 function RegistrationForm(props) {
   // console.log(props);
   return (
@@ -92,14 +91,6 @@ function RegistrationForm(props) {
           Name:
           <Field type="text" name="name" placeholder="Name" />
         </label>{" "}
-        {/* <ErrorMessage
-          name="last_name"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label>
-          Last Name:
-          <Field type="text" name="last_name" placeholder="last name " />
-        </label> */}
         <ErrorMessage
           name="email"
           render={msg => <div className="error">{msg}</div>}
@@ -140,22 +131,8 @@ function RegistrationForm(props) {
             placeholder="Re-enter password "
           />
         </label>
-        {/* <ErrorMessage
-          name="terms"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label className="terms-checkbox">
-          I confirm I have read and agree to the Terms of Service
-          <Field type="checkbox" name="terms" />
-        </label> */}
-        {/* <Field className="submit-button" type="submit" /> */}
         <button type="submit">Submit</button>
       </Form>
-      {/* <div>
-    {
-
-    }
-</div> */}
     </StyledDiv>
   );
 }
@@ -164,11 +141,9 @@ const RegistrationFormWithFormik = withFormik({
   mapPropsToValues() {
     return {
       name: "",
-      // last_name: "",
       email: "",
       current_password: "",
-      user_name: "",
-      terms: false
+      user_name: ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -176,10 +151,7 @@ const RegistrationFormWithFormik = withFormik({
       .required("Please enter first name")
       .min(2, "Too Short!")
       .max(25, "Too Long!"),
-    // last_name: Yup.string()
-    //   .required("Please enter last name")
-    //   .min(2, "Too Short!")
-    //   .max(25, "Too Long!"),
+
     email: Yup.string()
       .required("Please enter email")
       .email("Invalid email"),
@@ -196,16 +168,9 @@ const RegistrationFormWithFormik = withFormik({
       .required("user name is a required field")
       .min(3, "Too Short!")
       .max(25, "Too Long!")
-
-    // terms: Yup.boolean().required(
-    //   "It is necessary to agree to terms of service to proceed with registration"
-    // )
   }),
 
   handleSubmit(input, tools) {
-    // const list = tools.props.userList;
-    // const setList = tools.props.setUserList;
-
     axios
       .post("https://reqres.in/api/users/", input)
       .then(res => {

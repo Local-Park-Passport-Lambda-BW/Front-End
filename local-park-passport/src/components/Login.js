@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
@@ -76,7 +76,7 @@ function LoginForm(props) {
   // console.log(props);
   return (
     <StyledDiv className="New-user-form">
-      <h2>Log in</h2>
+      <h2>Sign in</h2>
       <Form className="form">
         <ErrorMessage
           name="userName_password"
@@ -117,23 +117,15 @@ const LoginFormWithFormik = withFormik({
     };
   },
   validationSchema: Yup.object().shape({
-    current_password: Yup.string()
-      .required("password is a required field")
-      .min(5, "Too Short!")
-      .max(25, "Too Long!"),
-
+    current_password: Yup.string().required("password is a required field"),
     user_name: Yup.string().required("user name is a required field")
   }),
 
   handleSubmit(input, tools) {
-    const list = tools.props.userList;
-    const setList = tools.props.setUserList;
-
     axios
       .post("https://reqres.in/api/users/", input)
       .then(res => {
         console.log(res.data);
-
         tools.resetForm();
       })
       .catch(err => {

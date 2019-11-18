@@ -1,66 +1,45 @@
 import React from 'react'
-import styled from 'styled-components';
-import { Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Navbar, Nav, NavItem, Input, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 
 import brandLogo from '../images/LP-logo.png'
 import evansImage from '../images/evans.jpg'
 
-const NavContainer = styled.div`
-  display: flex;
-
-  .brandCon {
-    padding: 1.5em;
-
-    img {max-width: 100%;
-      width: 30px;
-      height: auto ;
-    }
-  }
-
-  .mainNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .searchCon {
-
-    }
-
-    .rightNav {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-
-      img {
-        max-width: 100%;
-        border-radius: 50%;
-        width: 40px;
-        height: auto;
-      }
-    }
-  }
-  
-`;
-
 const DashboardNav = () => {
   return (
     <div>
-      <Navbar color="light" light expand="md">
-        <Nav className="ml-auto" navbar>
+      <Navbar color="white" light expand="md">
+        <Nav className="logoCon">
+          <img src={brandLogo} alt="brand logo" className="logo" />
+        </Nav>
+        <Nav>
+          <Input
+            className="navSearch"
+            type="search"
+            name="search"
+            placeholder="Find a park..."
+          />
+        </Nav>
+        <Nav className="ml-auto navCon" navbar>
           <NavItem>
-            <NavLink href="/components/">Inactive Link</NavLink>
+          <Button color="success" size="sm" className="addParkButton">Add A Park</Button>{' '}
           </NavItem>
+
           <UncontrolledDropdown setActiveFromChild>
             <DropdownToggle tag="a" className="nav-link" caret>
-              Dropdown
-          </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem tag="a" href="/blah" active>Link</DropdownItem>
+              <span className="charles">Charles Vane</span>
+              <img src={evansImage} alt="profile" className="evansDrop" />
+            </DropdownToggle>
+            <DropdownMenu className="dropMenu">
+              <DropdownItem tag="a" href="/blah" active>View Profile</DropdownItem>
+              <DropdownItem tag="a" href="/blah">Parks Visited</DropdownItem>
+              <DropdownItem tag="a" href="/blah">Parks Added</DropdownItem>
+              <DropdownItem tag="a" href="/blah">Account Settings</DropdownItem>
+              <DropdownItem tag="a" href="/blah" className="navLogout">Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
       </Navbar>
-      
+
     </div>
   )
 }

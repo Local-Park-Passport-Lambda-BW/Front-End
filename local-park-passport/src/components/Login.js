@@ -83,11 +83,11 @@ function LoginForm(props) {
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
-          Username or password:
+          Username or email:
           <Field
             type="text"
             name="userName_password"
-            placeholder="Username/password"
+            placeholder="Username or email"
           />
         </label>
         <ErrorMessage
@@ -118,7 +118,7 @@ const LoginFormWithFormik = withFormik({
   },
   validationSchema: Yup.object().shape({
     current_password: Yup.string().required("password is a required field"),
-    user_name: Yup.string().required("user name is a required field")
+    userName_password: Yup.string().required("user name is a required field")
   }),
 
   handleSubmit(input, tools) {

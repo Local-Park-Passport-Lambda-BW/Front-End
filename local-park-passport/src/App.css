@@ -20,3 +20,32 @@
 .App-link {
   color: #09d3ac;
 }
+
+.navCon {
+  display: flex;
+  align-items: center;
+
+}
+
+.addParkButton {
+  padding: 0.5em 1em;
+  margin-right: 1.5em;
+}
+
+.charles {
+  font-size: 0.8rem;
+  padding-right: 0.5em;
+}
+
+.evansDrop {
+  width: 30px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.dropMenu {
+  margin-right: 2em;
+  margin-top: 0;
+  width: 120px;
+  font-size: 0.8rem;
+}

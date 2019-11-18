@@ -29,7 +29,8 @@ const StyledDiv = styled.div`
     }
   }
 `;
-export default function ParksList({ parks }) {
+
+const ParksList = ({parks}) => {
   return (
     <StyledDiv className="park-list">
       {parks.map(park => (
@@ -40,5 +41,7 @@ export default function ParksList({ parks }) {
         </div>
       ))}
     </StyledDiv>
-  );
+  )
 }
+
+export default ParksList

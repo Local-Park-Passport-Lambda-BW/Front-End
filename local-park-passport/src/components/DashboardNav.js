@@ -5,43 +5,6 @@ import { Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, Dr
 import brandLogo from '../images/LP-logo.png'
 import evansImage from '../images/evans.jpg'
 
-const NavContainer = styled.div`
-  display: flex;
-
-  .brandCon {
-    padding: 1.5em;
-
-    img {max-width: 100%;
-      width: 30px;
-      height: auto ;
-    }
-  }
-
-  .mainNav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .searchCon {
-
-    }
-
-    .rightNav {
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-
-      img {
-        max-width: 100%;
-        border-radius: 50%;
-        width: 40px;
-        height: auto;
-      }
-    }
-  }
-  
-`;
-
 const DashboardNav = () => {
   return (
     <div>

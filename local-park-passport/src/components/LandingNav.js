@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
   } */
 `;
 
-const Navigation = () => {
+const LandingNav = () => {
   return (
     <StyledDiv>
       <div>
@@ -38,4 +38,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default LandingNav;

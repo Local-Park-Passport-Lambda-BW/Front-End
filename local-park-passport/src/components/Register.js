@@ -100,34 +100,30 @@ function RegistrationForm(props) {
           <Field type="email" name="email" placeholder="email " />
         </label>
         <ErrorMessage
-          name="user_name"
+          name="userName"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Username:
-          <Field type="text" name="user_name" placeholder="Username" />
+          <Field type="text" name="userName" placeholder="Username" />
         </label>
         <ErrorMessage
-          name="current_password"
+          name="password"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Password :
-          <Field
-            type="password"
-            name="current_password"
-            placeholder="Password "
-          />
+          <Field type="password" name="password" placeholder="Password " />
         </label>
         <ErrorMessage
-          name="password_confirmation"
+          name="passwordConfirmation"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Re-enter Password :
           <Field
             type="password"
-            name="password_confirmation"
+            name="passwordConfirmation"
             placeholder="Re-enter password "
           />
         </label>
@@ -142,8 +138,8 @@ const RegistrationFormWithFormik = withFormik({
     return {
       name: "",
       email: "",
-      current_password: "",
-      user_name: ""
+      password: "",
+      userName: ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -155,24 +151,30 @@ const RegistrationFormWithFormik = withFormik({
     email: Yup.string()
       .required("Please enter email")
       .email("Invalid email"),
-    current_password: Yup.string()
+    password: Yup.string()
       .required("password is a required field")
       .min(5, "Too Short!")
-      .max(25, "Too Long!"),
+      .max(25, "Too Long!")
+      .matches(/(?=.*[0-9])/, "Must contain at least one number"),
 
-    password_confirmation: Yup.string()
+    passwordConfirmation: Yup.string()
       .required("re-enter password")
-      .oneOf([Yup.ref("current_password"), null], "Passwords must match"),
+      .oneOf([Yup.ref("password"), null], "Passwords must match"),
 
-    user_name: Yup.string()
+    userName: Yup.string()
       .required("user name is a required field")
       .min(3, "Too Short!")
       .max(25, "Too Long!")
   }),
 
   handleSubmit(input, tools) {
+    // from Lisa to prevent password confirmation from being returned
+    // const { password_confirmation, ...rest } = formValues;
+    // console.log("rest", rest);
+
     axios
       .post("https://reqres.in/api/users/", input)
+      // https://parks-development-api.herokuapp.com/
       .then(res => {
         console.log(res.data);
         tools.resetForm();

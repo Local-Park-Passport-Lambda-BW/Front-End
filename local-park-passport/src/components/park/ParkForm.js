@@ -3,25 +3,25 @@ import styled from "styled-components";
 
 // Styling
 const StyledDiv = styled.div`
-    width: 61.8%;
-    margin: 0 auto;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+
+  .park-form {
+    padding: 30px;
+    width: 100%;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 
-    .park-form {
-     padding: 30px;
-     width:100%;
-     margin-top: 5px;
-     display: flex;
-     flex-direction: column;
-     border-radius: 4px;
-      
-      .parks-button {
-       margin-top:30px;
-      }
+    .parks-button {
+      margin-top: 30px;
     }
+  }
 `;
 
 export default function ParkForm(props) {

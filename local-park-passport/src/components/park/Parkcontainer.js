@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 // Styling
 const StyledDiv = styled.div`
-  width: 61.8%;
+  width: 90%;
   margin: 0 auto;
   /* border: 1px solid blue; */
   display: flex;

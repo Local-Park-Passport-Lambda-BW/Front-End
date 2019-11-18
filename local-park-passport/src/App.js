@@ -8,7 +8,7 @@ import LandingPage from "./components/LandingPage";
 import LandingNav from "./components/LandingNav";
 
 function App() {
-  let loggedIn = true;
+  let loggedIn = false;
   let routes = (
     <>
       <Route exact path="/" component={Dashboard} />

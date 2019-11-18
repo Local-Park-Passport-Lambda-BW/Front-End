@@ -28,10 +28,8 @@ export default function Dashboard() {
     <div className="Parks">
       <DashboardNav />
       <ParksList parks={parks} />
-      <ParkForm addNewPark={addNewPark} />
-      {/* <Route path="/dashboard/add-park" render={props => {
-        return <ParkForm {...props} addNewPark={addNewPark} />
-      }} /> */}
+      {/* <ParkForm addNewPark={addNewPark} /> */}
+      {/* <Route path="/dashboard/add-park" render={props => <ParkForm {...props} addNewPark={addNewPark} />} /> */}
 
 
       

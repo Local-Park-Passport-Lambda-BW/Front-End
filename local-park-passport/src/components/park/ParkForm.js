@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import styled from "styled-components";
-
-// Styling
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData
+} from "react-country-region-selector";
+// Styling;
 const StyledDiv = styled.div`
-  width: 60%;
-  margin: 0 auto;
+  width: 98%;
+  margin: 20px auto;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -12,7 +16,7 @@ const StyledDiv = styled.div`
 
   .park-form {
     padding: 30px;
-    width: 100%;
+    width: 80%;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
@@ -20,6 +24,14 @@ const StyledDiv = styled.div`
 
     .parks-button {
       margin-top: 30px;
+      background-color: green;
+      border-radius: 5px;
+      width: 100px;
+      color: white;
+    }
+    .label {
+      background-color: #e9e9e9;
+      border-radius: 5px;
     }
   }
 `;
@@ -39,23 +51,21 @@ export default function ParkForm(props) {
   return (
     <StyledDiv>
       <form onSubmit={submitForm} className="park-form">
-        <label htmlFor="title" className="parks-label">
-          Title
-        </label>
+        <label htmlFor="title" className="parks-label"></label>
         <input
-          className="parks-input"
+          className="parks-input label"
           name="title"
           onChange={handleChanges}
           value={park.title}
+          placeholder="Park Name"
         />
-        <label htmlFor="body" className="parks-label">
-          Park Info
-        </label>
+        <label htmlFor="body" className="parks-label "></label>
         <textarea
-          className="parks-textarea"
+          className="parks-textarea label"
           name="body"
           onChange={handleChanges}
           value={park.body}
+          placeholder="Description"
         />
         <button className="parks-button">Add Park</button>
       </form>

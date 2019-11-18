@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
-import { Navbar, Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Navbar, Nav, NavItem, Input, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
 
 import brandLogo from '../images/LP-logo.png'
 import evansImage from '../images/evans.jpg'
@@ -8,10 +7,20 @@ import evansImage from '../images/evans.jpg'
 const DashboardNav = () => {
   return (
     <div>
-      <Navbar color="light" light expand="md">
+      <Navbar color="white" light expand="md">
+        <Nav className="logoCon">
+          <img src={brandLogo} alt="brand logo" className="logo" />
+        </Nav>
+        <Nav>
+          <Input
+            className="navSearch"
+            type="search"
+            name="search"
+            placeholder="Find a park..."
+          />
+        </Nav>
         <Nav className="ml-auto navCon" navbar>
           <NavItem>
-            {/* <NavLink href="/components/">Inactive Link</NavLink> */}
           <Button color="success" size="sm" className="addParkButton">Add A Park</Button>{' '}
           </NavItem>
 
@@ -22,10 +31,10 @@ const DashboardNav = () => {
             </DropdownToggle>
             <DropdownMenu className="dropMenu">
               <DropdownItem tag="a" href="/blah" active>View Profile</DropdownItem>
-              <DropdownItem tag="a" href="/blah" active>Parks Visited</DropdownItem>
-              <DropdownItem tag="a" href="/blah" active>Parks Added</DropdownItem>
-              <DropdownItem tag="a" href="/blah" active>Account Settings</DropdownItem>
-              <DropdownItem tag="a" href="/blah" active>Logout</DropdownItem>
+              <DropdownItem tag="a" href="/blah">Parks Visited</DropdownItem>
+              <DropdownItem tag="a" href="/blah">Parks Added</DropdownItem>
+              <DropdownItem tag="a" href="/blah">Account Settings</DropdownItem>
+              <DropdownItem tag="a" href="/blah" className="navLogout">Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

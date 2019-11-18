@@ -1,3 +1,6 @@
+body {
+  background: #F6F6F6;
+}
 .App {
   text-align: center;
 }
@@ -27,6 +30,26 @@
 
 }
 
+.logoCon {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.logo {
+  width: 25px;
+  height: auto;
+}
+
+.navSearch {
+  margin-left: 2em;
+  padding-left: 1.5em;
+  font-size: 0.8rem;
+  background: #E9E9E9;
+  color: #5A5A5A;
+  font-weight: 500;
+  width: 250px;
+}
+
 .addParkButton {
   padding: 0.5em 1em;
   margin-right: 1.5em;
@@ -44,8 +67,12 @@
 }
 
 .dropMenu {
-  margin-right: 2em;
+  margin-right: 3em;
   margin-top: 0;
-  width: 120px;
+  width: 180px;
   font-size: 0.8rem;
+}
+
+.navLogout {
+  margin-top: 1em;
 }

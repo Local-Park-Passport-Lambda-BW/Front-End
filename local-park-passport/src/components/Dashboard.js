@@ -5,7 +5,7 @@ import { Route } from 'react-router-dom'
 import DashboardNav from "./DashboardNav";
 import ParkForm from "./park/ParkForm";
 import ParksList from "./park/ParksList";
-import { useLocalStorage } from '../hooks/useLocalStorage'
+import { useLocalStorage } from './hooks/useLocalStorage'
 
 export default function Dashboard() {
   

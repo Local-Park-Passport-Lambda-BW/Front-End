@@ -10,8 +10,8 @@ export default function Dashboard() {
   
   const [parkList, setParkList] = useState([{
     id: "1",
-    title: "Windshall",
-    body: "Some new text not meaning anything for all to see"
+    name: "Windshall",
+    description: "Some new text not meaning anything for all to see"
   }]);
 
   

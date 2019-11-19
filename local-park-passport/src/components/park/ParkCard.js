@@ -41,6 +41,39 @@ const CardCon = styled.div`
     button {
       width: 100px;
     }
+
+    .ratingCon {
+
+      .outer-star {
+        position: relative;
+      }
+
+      .inner-star {
+        position: absolute;
+        top: 0;
+        left: 0;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+      }
+
+      .outer-star::before {
+        content: "\f005 \f005 \f005 \f005 \f005";
+        font-family: "Font Awesome Free";
+        font-weight: 200;
+        color: #ccc;
+      }
+      .inner-star::before {
+        content: "\f005 \f005 \f005 \f005 \f005";
+        font-family: "Font Awesome Free";
+        font-weight: 200;
+        color: #f8ce0b;
+      }
+
+      .checked{
+        color: orange;
+      }
+    }
   }
 
 `;
@@ -54,8 +87,10 @@ const ParkCard = ({park}) => {
         <h5 className="card-title">{park.title}</h5>
         <p>{park.body}</p>
 
-        <div>
-          <i className="fa fa-spinner fa-spin"></i>
+        <div className="ratingCon">
+          <div className="outer-star">
+            <div className="inner-star"></div>
+          </div>
         </div>
       </div>
     </CardCon>

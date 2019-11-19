@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CountryFinder from "./countryFinder";
+import axios from "axios";
 // Styling;
 const StyledDiv = styled.div`
   width: 98%;
@@ -39,6 +40,17 @@ export default function ParkForm(props) {
     country: "",
     region: ""
   });
+  // function handleSubmit(input){
+  //   input.preventDefault();
+  // axios
+  //   .post("https://park-pp.herokuapp.com/parks", ParkForm)
+  //   .then(response => {
+  //     console.log(response.data);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
+  // })(ParkForm);
 
   const handleChanges = e => {
     setPark({ ...park, [e.target.name]: e.target.value });
@@ -54,6 +66,14 @@ export default function ParkForm(props) {
   const submitForm = e => {
     e.preventDefault();
     props.addNewPark(park);
+    axios
+      .post("https://park-pp.herokuapp.com/parks", ParkForm)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
@@ -84,7 +104,7 @@ export default function ParkForm(props) {
 
         <div>
           {" "}
-          <button classname="parks-button">Add a park</button>{" "}
+          <button className="parks-button">Add a park</button>{" "}
         </div>
       </form>
     </StyledDiv>

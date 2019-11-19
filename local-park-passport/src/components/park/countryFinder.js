@@ -1,11 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData
-} from "react-country-region-selector";
-// Styling;
+
+// Styling
 const StyledDiv = styled.div`
   width: 98%;
   margin: 20px auto;
@@ -37,7 +33,7 @@ const StyledDiv = styled.div`
 `;
 
 export default function ParkForm(props) {
-  const [park, setPark] = useState({ name: "", description: "" });
+  const [park, setPark] = useState({ title: "", body: "" });
 
   const handleChanges = e => {
     setPark({ ...park, [e.target.name]: e.target.value });
@@ -51,20 +47,20 @@ export default function ParkForm(props) {
   return (
     <StyledDiv>
       <form onSubmit={submitForm} className="park-form">
-        <label htmlFor="name" className="parks-label"></label>
+        <label htmlFor="title" className="parks-label"></label>
         <input
           className="parks-input label"
-          name="name"
+          name="title"
           onChange={handleChanges}
-          value={park.name}
+          value={park.title}
           placeholder="Park Name"
         />
-        <label htmlFor="description" className="parks-label "></label>
+        <label htmlFor="body" className="parks-label "></label>
         <textarea
           className="parks-textarea label"
-          name="description"
+          name="body"
           onChange={handleChanges}
-          value={park.description}
+          value={park.body}
           placeholder="Description"
         />
         <button className="parks-button">Add Park</button>

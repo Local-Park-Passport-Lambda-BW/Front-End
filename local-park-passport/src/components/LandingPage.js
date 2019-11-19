@@ -1,13 +1,12 @@
-import React from 'react'
-import LandingNav from './LandingNav'
+import React from "react";
+import LandingNav from "./LandingNav";
 
 const LandingPage = () => {
   return (
     <div>
-      <LandingNav />
-      
+      <div>hello</div>
     </div>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

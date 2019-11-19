@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
@@ -46,7 +46,7 @@ const StyledDiv = styled.div`
     input {
       display: flex;
       flex-direction: column;
-      width: 38.2%;
+      width: 50%;
       margin: 0 auto;
       /* margin-right: 40px; */
       margin-bottom: 3px;
@@ -77,29 +77,20 @@ const StyledDiv = styled.div`
     font-weight: 600;
   }
 `;
-
 function RegistrationForm(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <StyledDiv className="New-user-form">
-      <h2>Register</h2>
+      <h2>Sign Up</h2>
       <Form className="form">
         <ErrorMessage
-          name="first_name"
+          name="name"
           render={msg => <div className="error">{msg}</div>}
         />
-        <label id="first-name">
-          First Name:
-          <Field type="text" name="first_name" placeholder="first name" />
+        <label id="name">
+          Name:
+          <Field type="text" name="name" placeholder="Name" />
         </label>{" "}
-        <ErrorMessage
-          name="last_name"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label>
-          Last Name:
-          <Field type="text" name="last_name" placeholder="last name " />
-        </label>
         <ErrorMessage
           name="email"
           render={msg => <div className="error">{msg}</div>}
@@ -109,53 +100,35 @@ function RegistrationForm(props) {
           <Field type="email" name="email" placeholder="email " />
         </label>
         <ErrorMessage
-          name="user_name"
+          name="username"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Username:
-          <Field type="text" name="user_name" placeholder="Username" />
+          <Field type="text" name="username" placeholder="Username" />
         </label>
         <ErrorMessage
-          name="current_password"
+          name="password"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Password :
-          <Field
-            type="password"
-            name="current_password"
-            placeholder="Password "
-          />
+          <Field type="password" name="password" placeholder="Password " />
         </label>
         <ErrorMessage
-          name="password_confirmation"
+          name="passwordConfirmation"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Re-enter Password :
           <Field
             type="password"
-            name="password_confirmation"
+            name="passwordConfirmation"
             placeholder="Re-enter password "
           />
         </label>
-        <ErrorMessage
-          name="terms"
-          render={msg => <div className="error">{msg}</div>}
-        />
-        <label className="terms-checkbox">
-          I confirm I have read and agree to the Terms of Service
-          <Field type="checkbox" name="terms" />
-        </label>
-        {/* <Field className="submit-button" type="submit" /> */}
         <button type="submit">Submit</button>
       </Form>
-      {/* <div>
-    {
-
-    }
-</div> */}
     </StyledDiv>
   );
 }
@@ -163,54 +136,51 @@ function RegistrationForm(props) {
 const RegistrationFormWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      first_name: "",
-      last_name: "",
+      name: "",
       email: "",
-      current_password: "",
-      user_name: "",
-      terms: false
+      password: "",
+      username: ""
     };
   },
   validationSchema: Yup.object().shape({
-    first_name: Yup.string()
+    name: Yup.string()
       .required("Please enter first name")
       .min(2, "Too Short!")
       .max(25, "Too Long!"),
-    last_name: Yup.string()
-      .required("Please enter last name")
-      .min(2, "Too Short!")
-      .max(25, "Too Long!"),
+
     email: Yup.string()
       .required("Please enter email")
       .email("Invalid email"),
-    current_password: Yup.string()
+    password: Yup.string()
       .required("password is a required field")
       .min(5, "Too Short!")
-      .max(25, "Too Long!"),
+      .max(25, "Too Long!")
+      .matches(/(?=.*[0-9])/, "Must contain at least one number"),
 
-    password_confirmation: Yup.string()
+    passwordConfirmation: Yup.string()
       .required("re-enter password")
-      .oneOf([Yup.ref("current_password"), null], "Passwords must match"),
+      .oneOf([Yup.ref("password"), null], "Passwords must match"),
 
-    user_name: Yup.string()
+    username: Yup.string()
       .required("user name is a required field")
       .min(3, "Too Short!")
-      .max(25, "Too Long!"),
-
-    terms: Yup.boolean().required(
-      "It is necessary to agree to terms of service to proceed with registration"
-    )
+      .max(25, "Too Long!")
   }),
 
   handleSubmit(input, tools) {
-    const list = tools.props.userList;
-    const setList = tools.props.setUserList;
+    // from Lisa to prevent password confirmation from being returned
+    // const { password_confirmation, ...rest } = formValues;
+    // console.log("rest", rest);
 
     axios
-      .post("https://reqres.in/api/users/", input)
+      .post("http://localhost:3300/users/register", input)
+      // https://reqres.in/api/users/
+      // https://reqres.in/api/users/
+      // http://localhost:3300/user/register
+      // https://parks-development-api.herokuapp.com/
+      // https://park-pp.herokuapp.com/users/register
       .then(res => {
         console.log(res.data);
-
         tools.resetForm();
       })
       .catch(err => {

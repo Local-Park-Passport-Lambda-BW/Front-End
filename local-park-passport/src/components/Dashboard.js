@@ -16,8 +16,8 @@ export default function Dashboard() {
   }]);
   const [searchValue, setSearchValue] = useLocalStorage("");
 
-  const handleChange = e => {
-    setSearchValue(e.target.value);
+  const handleChange = evt => {
+    setSearchValue(evt.target.value);
   }
   
   const addNewPark = park => {

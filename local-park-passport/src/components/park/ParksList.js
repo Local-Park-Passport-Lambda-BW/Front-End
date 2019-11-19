@@ -17,9 +17,9 @@ const ParksList = ({ parkList, setParkList }) => {
     axios
       .get("http://localhost:3300/parks")
       .then(res => setParkList(res.data))
-      .catch(error => alert(error.message));
+      .catch(error => console.log(error.message));
   }, []);
-  
+
   return (
     <div>
       <h1 className="intro">Welcome to Parks Page.</h1>

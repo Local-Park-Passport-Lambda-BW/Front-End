@@ -1,31 +1,43 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import styled from "styled-components";
-
-// Styling
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData
+} from "react-country-region-selector";
+// Styling;
 const StyledDiv = styled.div`
-    width: 61.8%;
-    margin: 0 auto;
+  width: 98%;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+
+  .park-form {
+    padding: 30px;
+    width: 80%;
+    margin-top: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
 
-    .park-form {
-     padding: 30px;
-     width:100%;
-     margin-top: 5px;
-     display: flex;
-     flex-direction: column;
-     border-radius: 4px;
-      
-      .parks-button {
-       margin-top:30px;
-      }
+    .parks-button {
+      margin-top: 30px;
+      background-color: green;
+      border-radius: 5px;
+      width: 100px;
+      color: white;
     }
+    .label {
+      background-color: #e9e9e9;
+      border-radius: 5px;
+    }
+  }
 `;
 
 export default function ParkForm(props) {
-  const [park, setPark] = useState({ title: "", body: "" });
+  const [park, setPark] = useState({ name: "", description: "" });
 
   const handleChanges = e => {
     setPark({ ...park, [e.target.name]: e.target.value });
@@ -39,23 +51,21 @@ export default function ParkForm(props) {
   return (
     <StyledDiv>
       <form onSubmit={submitForm} className="park-form">
-        <label htmlFor="title" className="parks-label">
-          Title
-        </label>
+        <label htmlFor="name" className="parks-label"></label>
         <input
-          className="parks-input"
-          name="title"
+          className="parks-input label"
+          name="name"
           onChange={handleChanges}
-          value={park.title}
+          value={park.name}
+          placeholder="Park Name"
         />
-        <label htmlFor="body" className="parks-label">
-          Park Info
-        </label>
+        <label htmlFor="description" className="parks-label "></label>
         <textarea
-          className="parks-textarea"
-          name="body"
+          className="parks-textarea label"
+          name="description"
           onChange={handleChanges}
-          value={park.body}
+          value={park.description}
+          placeholder="Description"
         />
         <button className="parks-button">Add Park</button>
       </form>

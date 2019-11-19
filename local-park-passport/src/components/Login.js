@@ -79,28 +79,20 @@ function LoginForm(props) {
       <h2>Sign in</h2>
       <Form className="form">
         <ErrorMessage
-          name="userName_password"
+          name="username"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Username or email:
-          <Field
-            type="text"
-            name="userName_password"
-            placeholder="Username or email"
-          />
+          <Field type="text" name="username" placeholder="Username or email" />
         </label>
         <ErrorMessage
-          name="current_password"
+          name="password"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Password :
-          <Field
-            type="password"
-            name="current_password"
-            placeholder="Password "
-          />
+          <Field type="password" name="password" placeholder="Password " />
         </label>
 
         <button type="submit">Submit</button>
@@ -112,20 +104,21 @@ function LoginForm(props) {
 const LoginFormWithFormik = withFormik({
   mapPropsToValues() {
     return {
-      userName_password: "",
-      current_password: ""
+      username: "",
+      password: ""
     };
   },
   validationSchema: Yup.object().shape({
-    current_password: Yup.string().required("password is a required field"),
-    userName_password: Yup.string().required("user name is a required field")
+    password: Yup.string().required("password is a required field"),
+    username: Yup.string().required("user name is a required field")
   }),
 
   handleSubmit(input, tools) {
     axios
-      .post("https://reqres.in/api/users/", input)
+      .post("http://localhost:3300/users/login", input)
       .then(res => {
-        console.log(res.data);
+        localStorage.setItem("token", res.data.token);
+        console.log(res.data.token);
         tools.resetForm();
       })
       .catch(err => {

@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 // Styling
 const StyledDiv = styled.div`
-  width: 61.8%;
+  width: 90%;
   margin: 0 auto;
   /* border: 1px solid blue; */
   display: flex;
@@ -18,10 +18,9 @@ const StyledDiv = styled.div`
 export default function Parks() {
   const [parks, setParks] = useState([
     {
-      id: 1,
-      title: "Coldham's Common",
-      body:
-        "A large open shared use space with wild meadow, sports pitches and woodland.  Fully off lead"
+      id: "",
+      name: "",
+      description:""
     }
   ]);
 

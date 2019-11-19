@@ -12,7 +12,6 @@ const ParkListCon = styled.div`
 `;
 
 const ParksList = ({ parkList, setParkList }) => {
-  console.log(parkList)
 
   useEffect(() => {
     axios
@@ -20,6 +19,7 @@ const ParksList = ({ parkList, setParkList }) => {
       .then(res => setParkList(res.data))
       .catch(error => alert(error.message));
   }, []);
+  
   return (
     <div>
       <h1 className="intro">Welcome to Parks Page.</h1>

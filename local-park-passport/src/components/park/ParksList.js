@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
 
 import ParkCard from "./ParkCard";
 
@@ -10,13 +11,25 @@ const ParkListCon = styled.div`
   flex-wrap: wrap;
 `;
 
-const ParksList = ({ parks }) => {
+const ParksList = ({ parkList, setParkList }) => {
+  console.log(parkList)
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:3300/parks")
+      .then(res => setParkList(res.data))
+      .catch(error => alert(error.message));
+  }, []);
   return (
-    <ParkListCon>
-      {parks.map(park => (
-        <ParkCard key={park.id} park={park} />
-      ))}
-    </ParkListCon>
+    <div>
+      <h1 className="intro">Welcome to Parks Page.</h1>
+
+      <ParkListCon>
+        {parkList.map(park => (
+          <ParkCard key={park.id} park={park} />
+        ))}
+      </ParkListCon>
+    </div>
   );
 };
 

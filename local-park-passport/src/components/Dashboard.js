@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 // import { Route } from 'react-router-dom'
 
 import DashboardNav from "./DashboardNav";
@@ -6,14 +7,14 @@ import ParkForm from "./park/ParkForm";
 import ParksList from "./park/ParksList";
 
 export default function Dashboard() {
-  const [parks, setParks] = useState([
-    {
-      id: 1,
-      title: "Coldham's Common",
-      body:
-        "A large open shared use space with wild meadow, sports pitches and woodland.  Fully off lead"
-    }
-  ]);
+  
+  const [parkList, setParkList] = useState([{
+    id: "1",
+    title: "Windshall",
+    body: "Some new text not meaning anything for all to see"
+  }]);
+
+  
 
   const addNewPark = park => {
     const newPark = {
@@ -21,14 +22,14 @@ export default function Dashboard() {
       id: Date.now()
     };
 
-    setParks([...parks, newPark]);
+    setParkList([...parkList, newPark]);
   };
 
   return (
     <div className="Parks">
       <DashboardNav />
       <ParkForm addNewPark={addNewPark} />
-      <ParksList parks={parks} />
+      <ParksList parkList={parkList} setParkList={setParkList}/>
       {/* <Route path="/dashboard/add-park" render={props => <ParkForm {...props} addNewPark={addNewPark} />} /> */}
 
       {/* we are going to pass a function down as a prop */}

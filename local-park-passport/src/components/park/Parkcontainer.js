@@ -20,14 +20,14 @@ export default function Parks() {
     {
       id: "",
       name: "",
-      description:""
+      description: ""
     }
   ]);
 
   const addNewPark = park => {
     const newPark = {
       ...park,
-      id: Date.now();
+      id: Date.now()
     };
 
     setParks([...parks, newPark]);

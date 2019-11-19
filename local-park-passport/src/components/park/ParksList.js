@@ -1,46 +1,61 @@
 import React from "react";
-import styled from "styled-components";
+import styled from 'styled-components'
+import parkImage from '../../images/bridge.jpg'
 
-// Styling
-const StyledDiv = styled.div`
-  width: 61.8%;
-  margin: 0 auto;
-  /* border: 1px solid blue; */
+
+const CardCon = styled.div`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
-  .park {
-    margin: 1%;
-    padding: 30px;
-    width: 30%;
-    /* margin-top: 5px; */
-    display: flex;
+  max-width: 420px;
+  border: 1px solid slateblue;
 
-    flex-direction: column;
-    border-radius: 4px;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
-    h2 {
-      font-size: 1rem;
+    img {
+      max-width: 100%;
+      height: auto;
     }
-    p {
-      font-size: 0.5rem;
+
+  .card-right-con {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 1em;
+    width
+
+    .title-card {
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    button {
+      width: 100px;
     }
   }
+
 `;
 
-const ParksList = ({parks}) => {
+const ParksList = ({ parks }) => {
   return (
-    <StyledDiv className="park-list">
+    <div>
       {parks.map(park => (
         <div className="park" key={park.id}>
           <h2>{park.title}</h2>
-          {/* <p>{park.id}</p> */}
           <p>{park.body}</p>
         </div>
       ))}
-    </StyledDiv>
+
+      <CardCon className="cardCon">
+          <img src={parkImage} alt="bridge-park" style={{width: "150px", height: "150px"}}/>
+
+        <div className="card-right-con">
+          <h5 className="title-card">Windshall Bridge Park</h5>
+          <p>Made up of walkways, shrubs and happiness, be yourself and come visit. Your kids will thank you for this.
+          Made up of walkways, shrubs and happiness, be yourself and come visit. Your kids will thank you for this.</p>
+          <div>
+
+            <button>Button</button>
+          </div>
+        </div>
+      </CardCon>
+    </div>
   )
 }
 

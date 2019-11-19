@@ -9,7 +9,7 @@ import ParksList from "./park/ParksList";
 export default function Dashboard() {
   
   const [parkList, setParkList] = useState([{
-    id: "1",
+    id: "",
     name: "Windshall",
     description: "Some new text not meaning anything for all to see"
   }]);

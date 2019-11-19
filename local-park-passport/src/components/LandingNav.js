@@ -17,7 +17,7 @@ const StyledDiv = styled.div`
 `;
 
 const LandingNav = props => {
-  let loggedIn = true;
+  let loggedIn = false;
   let navLinks = (
     <StyledDiv>
       <Link to={`/`}>Dashboard</Link>

@@ -37,7 +37,7 @@ const StyledDiv = styled.div`
 `;
 
 export default function ParkForm(props) {
-  const [park, setPark] = useState({ title: "", body: "" });
+  const [park, setPark] = useState({ name: "", description: "" });
 
   const handleChanges = e => {
     setPark({ ...park, [e.target.name]: e.target.value });

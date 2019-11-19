@@ -100,12 +100,12 @@ function RegistrationForm(props) {
           <Field type="email" name="email" placeholder="email " />
         </label>
         <ErrorMessage
-          name="userName"
+          name="username"
           render={msg => <div className="error">{msg}</div>}
         />
         <label>
           Username:
-          <Field type="text" name="userName" placeholder="Username" />
+          <Field type="text" name="username" placeholder="Username" />
         </label>
         <ErrorMessage
           name="password"
@@ -139,7 +139,7 @@ const RegistrationFormWithFormik = withFormik({
       name: "",
       email: "",
       password: "",
-      userName: ""
+      username: ""
     };
   },
   validationSchema: Yup.object().shape({
@@ -161,7 +161,7 @@ const RegistrationFormWithFormik = withFormik({
       .required("re-enter password")
       .oneOf([Yup.ref("password"), null], "Passwords must match"),
 
-    userName: Yup.string()
+    username: Yup.string()
       .required("user name is a required field")
       .min(3, "Too Short!")
       .max(25, "Too Long!")
@@ -173,8 +173,12 @@ const RegistrationFormWithFormik = withFormik({
     // console.log("rest", rest);
 
     axios
-      .post("https://reqres.in/api/users/", input)
+      .post("http://localhost:3300/users/register", input)
+      // https://reqres.in/api/users/
+      // https://reqres.in/api/users/
+      // http://localhost:3300/user/register
       // https://parks-development-api.herokuapp.com/
+      // https://park-pp.herokuapp.com/users/register
       .then(res => {
         console.log(res.data);
         tools.resetForm();

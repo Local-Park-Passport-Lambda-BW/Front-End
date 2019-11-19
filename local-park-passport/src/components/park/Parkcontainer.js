@@ -18,10 +18,9 @@ const StyledDiv = styled.div`
 export default function Parks() {
   const [parks, setParks] = useState([
     {
-      id: 1,
-      name: "Coldham's Common",
-      description:
-        "A large open shared use space with wild meadow, sports pitches and woodland.  Fully off lead"
+      id: "",
+      name: "",
+      description:""
     }
   ]);
 

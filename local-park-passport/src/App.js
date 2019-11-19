@@ -6,9 +6,9 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import LandingPage from "./components/LandingPage";
 import LandingNav from "./components/LandingNav";
-
+import GetPark from "./components/GetPark";
 function App() {
-  let loggedIn = true;
+  let loggedIn = false;
   let routes = (
     <>
       <Route exact path="/" component={Dashboard} />
@@ -32,6 +32,7 @@ function App() {
   return (
     <div className="App">
       <LandingNav />
+      <GetPark />
       {routes}
     </div>
   );

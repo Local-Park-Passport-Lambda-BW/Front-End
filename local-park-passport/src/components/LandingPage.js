@@ -1,8 +1,8 @@
 import React from "react";
 import LandingNav from "./LandingNav";
-import Main from './Main'
+import Main from "./Main";
 
-const LandingPage = (props) => {
+const LandingPage = props => {
   return (
     <div>
       <div>

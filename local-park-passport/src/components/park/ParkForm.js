@@ -1,10 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import {
-  CountryDropdown,
-  RegionDropdown,
-  CountryRegionData
-} from "react-country-region-selector";
+import CountryFinder from "./countryFinder";
 // Styling;
 const StyledDiv = styled.div`
   width: 98%;
@@ -37,16 +33,27 @@ const StyledDiv = styled.div`
 `;
 
 export default function ParkForm(props) {
-  const [park, setPark] = useState({ name: "", description: "" });
+  const [park, setPark] = useState({
+    name: "",
+    description: "",
+    country: "",
+    region: ""
+  });
 
   const handleChanges = e => {
     setPark({ ...park, [e.target.name]: e.target.value });
   };
 
+  const selectCountry = val => {
+    setPark({ ...park, country: val });
+  };
+  const selectRegion = val => {
+    setPark({ ...park, region: val });
+  };
+
   const submitForm = e => {
     e.preventDefault();
     props.addNewPark(park);
-    
   };
 
   return (
@@ -68,7 +75,17 @@ export default function ParkForm(props) {
           value={park.description}
           placeholder="Description"
         />
-        <button className="parks-button">Add Park</button>
+        <CountryFinder
+          country={park.country}
+          region={park.region}
+          selectCountry={selectCountry}
+          selectRegion={selectRegion}
+        />
+
+        <div>
+          {" "}
+          <button classname="parks-button">Add a park</button>{" "}
+        </div>
       </form>
     </StyledDiv>
   );

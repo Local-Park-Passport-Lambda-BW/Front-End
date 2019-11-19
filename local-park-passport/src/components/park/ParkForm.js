@@ -46,6 +46,7 @@ export default function ParkForm(props) {
   const submitForm = e => {
     e.preventDefault();
     props.addNewPark(park);
+    
   };
 
   return (

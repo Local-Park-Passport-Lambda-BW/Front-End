@@ -1,10 +1,13 @@
 import React from 'react'
-import { Navbar, Nav, NavItem, Input, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Navbar, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import brandLogo from '../images/LP-logo.png'
 import evansImage from '../images/evans.jpg'
+import SearchForm from './SearchForm'
 
-const DashboardNav = () => {
+const DashboardNav = ({ handleChange, onLogOut }) => {
+
   return (
     <div>
       <Navbar color="white" light expand="md">
@@ -12,16 +15,12 @@ const DashboardNav = () => {
           <img src={brandLogo} alt="brand logo" className="logo" />
         </Nav>
         <Nav>
-          <Input
-            className="navSearch"
-            type="search"
-            name="search"
-            placeholder="Find a park..."
-          />
+          <SearchForm handleChange={handleChange} />
         </Nav>
         <Nav className="ml-auto navCon" navbar>
           <NavItem>
-          <Button color="success" size="sm" className="addParkButton">Add A Park</Button>{' '}
+
+            <Button color="success" size="sm" className="addParkButton">Add A Park</Button>{' '}
           </NavItem>
 
           <UncontrolledDropdown setActiveFromChild>
@@ -34,7 +33,7 @@ const DashboardNav = () => {
               <DropdownItem tag="a" href="/blah">Parks Visited</DropdownItem>
               <DropdownItem tag="a" href="/blah">Parks Added</DropdownItem>
               <DropdownItem tag="a" href="/blah">Account Settings</DropdownItem>
-              <DropdownItem tag="a" href="/blah" className="navLogout">Logout</DropdownItem>
+              <DropdownItem className="navLogout" onClick={onLogOut}>Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

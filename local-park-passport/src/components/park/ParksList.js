@@ -5,10 +5,12 @@ import parkImage from '../../images/bridge.jpg'
 
 const CardCon = styled.div`
   display: flex;
-  width: 420px;
+  width: 400px;
   border: 1px solid #E2E2E2;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 0.6em;
   padding: 0.6em;
+  margin: 1em;
 
     img {
       max-width: 100%;
@@ -23,12 +25,13 @@ const CardCon = styled.div`
     text-align: left;
     align-self: center;
     width: 400px;
-    height: 150px;
+    height: 120px;
     margin-left: 1em;
 
     .card-title {
-      font-size: 1.1rem;
-      font-weight: 700;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
     }
 
     p {
@@ -53,13 +56,13 @@ const ParksList = ({ parks }) => {
       ))}
 
       <CardCon className="cardCon">
-          <img src={parkImage} alt="bridge-park" style={{width: "150px", height: "150px"}}/>
+        <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
 
         <div className="card-right-con">
           <h5 className="card-title">Windshall Bridge Park</h5>
           <p>Made up of walkways, shrubs and happiness, be yourself and come visit.</p>
-          <div>
 
+          <div>
             <button>Button</button>
           </div>
         </div>

@@ -55,7 +55,7 @@ const ParkCard = ({park}) => {
         <p>{park.body}</p>
 
         <div>
-          <button>Button</button>
+          <i className="fa fa-spinner fa-spin"></i>
         </div>
       </div>
     </CardCon>

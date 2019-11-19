@@ -23,7 +23,6 @@ const LandingNav = () => {
       <Link to={`/`}>Home</Link>
       <Link to={`/Login`}>Sign in</Link>
       <Link to={`/register`}>Sign up</Link>
-      <Link to={`/dashboard`}>Dashboard</Link>
     </StyledDiv>
   );
 };

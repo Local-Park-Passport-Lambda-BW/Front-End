@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Route } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
@@ -7,8 +7,16 @@ import Register from "./components/Register";
 import LandingPage from "./components/LandingPage";
 import LandingNav from "./components/LandingNav";
 import GetPark from "./components/GetPark";
+import GetToken from "./components/GetToken";
+
 function App() {
   let loggedIn = true;
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+    GetToken();
+  }, []);
+
   let routes = (
     <>
       <Route exact path="/" component={Dashboard} />
@@ -31,8 +39,8 @@ function App() {
 
   return (
     <div className="App">
-      <LandingNav />
-      <GetPark />
+      {/* <LandingNav />
+      <GetPark /> */}
       {routes}
     </div>
   );

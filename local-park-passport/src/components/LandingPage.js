@@ -4,7 +4,7 @@ import LandingNav from "./LandingNav";
 const LandingPage = () => {
   return (
     <div>
-      <div>hello</div>
+      <LandingNav />
     </div>
   );
 };

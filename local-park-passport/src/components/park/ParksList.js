@@ -2,6 +2,12 @@ import React from "react";
 import styled from 'styled-components'
 import parkImage from '../../images/bridge.jpg'
 
+// Styles
+const ParkListCon = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
 const CardCon = styled.div`
   display: flex;
@@ -25,7 +31,7 @@ const CardCon = styled.div`
     text-align: left;
     align-self: center;
     width: 400px;
-    height: 120px;
+    height: auto;
     margin-left: 1em;
 
     .card-title {
@@ -47,27 +53,22 @@ const CardCon = styled.div`
 
 const ParksList = ({ parks }) => {
   return (
-    <div>
+    <ParkListCon>
       {parks.map(park => (
-        <div className="park" key={park.id}>
-          <h2>{park.title}</h2>
-          <p>{park.body}</p>
-        </div>
-      ))}
+        <CardCon className="cardCon" key={park.id}>
+          <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
 
-      <CardCon className="cardCon">
-        <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
+          <div className="card-right-con">
+            <h5 className="card-title">{park.title}</h5>
+            <p>{park.body}</p>
 
-        <div className="card-right-con">
-          <h5 className="card-title">Windshall Bridge Park</h5>
-          <p>Made up of walkways, shrubs and happiness, be yourself and come visit.</p>
-
-          <div>
-            <button>Button</button>
+            <div>
+              <button>Button</button>
+            </div>
           </div>
-        </div>
-      </CardCon>
-    </div>
+        </CardCon>
+      ))}
+    </ParkListCon>
   )
 }
 

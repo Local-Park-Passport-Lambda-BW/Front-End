@@ -1,11 +1,12 @@
 import React from 'react'
 import { Navbar, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 import brandLogo from '../images/LP-logo.png'
 import evansImage from '../images/evans.jpg'
 import SearchForm from './SearchForm'
 
-const DashboardNav = ({ handleChange}) => {
+const DashboardNav = ({ handleChange, onLogOut }) => {
 
   return (
     <div>
@@ -32,7 +33,7 @@ const DashboardNav = ({ handleChange}) => {
               <DropdownItem tag="a" href="/blah">Parks Visited</DropdownItem>
               <DropdownItem tag="a" href="/blah">Parks Added</DropdownItem>
               <DropdownItem tag="a" href="/blah">Account Settings</DropdownItem>
-              <DropdownItem tag="a" href="/blah" className="navLogout">Logout</DropdownItem>
+              <DropdownItem className="navLogout" onClick={onLogOut}>Logout</DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>

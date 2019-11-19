@@ -7,7 +7,7 @@ import ParkForm from "./park/ParkForm";
 import ParksList from "./park/ParksList";
 import { useLocalStorage } from './hooks/useLocalStorage'
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   
   const [parkList, setParkList] = useState([{
     id: "",
@@ -31,9 +31,14 @@ export default function Dashboard() {
   
   const filteredParks = parkList.filter(char => char.name.toLowerCase().includes(searchValue.toLowerCase()))
 
+  const onLogOut = () => {
+    localStorage.clear()
+    props.history.push("/login")
+  }
+
   return (
     <div className="Parks">
-      <DashboardNav handleChange={handleChange}/>
+      <DashboardNav handleChange={handleChange} onLogOut={onLogOut}/>
       <ParkForm addNewPark={addNewPark} />
       <ParksList parkList={filteredParks} setParkList={setParkList}/>
       <Route exact path="/dashboard/add-park" component={ParkForm} />

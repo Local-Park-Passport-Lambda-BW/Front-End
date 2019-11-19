@@ -81,6 +81,11 @@ export default function ParkForm(props) {
           selectCountry={selectCountry}
           selectRegion={selectRegion}
         />
+
+        <div>
+          {" "}
+          <button classname="parks-button">Add a park</button>{" "}
+        </div>
       </form>
     </StyledDiv>
   );

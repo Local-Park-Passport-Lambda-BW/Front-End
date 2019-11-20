@@ -33,6 +33,13 @@ body {
 .logoCon {
   padding-left: 1em;
   padding-right: 1em;
+  margin: 0;
+}
+
+.logoCon p {
+  padding-left: 0.7em;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .logo {

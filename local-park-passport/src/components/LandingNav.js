@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Nav, NavItem, Button } from 'reactstrap';
+
+import brandLogo from '../images/LP-logo.png'
 
 const StyledDiv = styled.div`
   display: flex;
@@ -8,12 +11,19 @@ const StyledDiv = styled.div`
   width: 100vw;
   background: white;
   padding: 1em;
+  align-items: center;
+
+  a {
+    color: #3e3e3e;
+  }
 
   .rightNav {
-    left: 0;
+    display: flex;
+    align-items: center;
+    margin-right: 2em;
 
     a {
-      padding-left: 1em;
+      padding-left: 2em;
     }
   }
 `;
@@ -22,12 +32,23 @@ const LandingNav = () => {
 
   return (
     <StyledDiv>
-      <Link to={`/`}>Home</Link>
-      
-      <div className="rightNav">
-      <Link to={`/Login`}>Sign in</Link>
-      <Link to={`/register`}>Sign up</Link>
-      </div>
+      <Nav className="logoCon">
+        <Link to={`/`}>
+          <img src={brandLogo} alt="brand logo" className="logo" />
+        </Link>
+        <p>Local Park Passport</p>
+      </Nav>
+
+      <Nav className="rightNav">
+        <NavItem>
+          <Link to={`/Login`}>Sign in</Link>
+        </NavItem>
+        <NavItem>
+          <Link to={`/register`}>
+            <Button color="success">Sign up</Button>
+          </Link>
+        </NavItem>
+      </Nav>
     </StyledDiv>
   );
 };

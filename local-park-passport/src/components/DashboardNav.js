@@ -9,7 +9,7 @@ import {
   DropdownItem,
   Button
 } from "reactstrap";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import brandLogo from "../images/LP-logo.png";
 import evansImage from "../images/evans.jpg";

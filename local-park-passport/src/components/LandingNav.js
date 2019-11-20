@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
   background: white;
   padding: 1em;
   align-items: center;
+  padding-top: 1em;
 
   a {
     color: #3e3e3e;

@@ -12,24 +12,49 @@ const HeaderStyle = styled.header`
     -o-filter: blur(0px); */
 `;
 
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Content = styled.div`
+  flex-grow: 1;
+`;
+
+const FooterStyle = styled.footer`
+background: rgba(255, 255, 255, 0.5);
+width: 100vw;
+height: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+
+  p {
+    margin: 0;
+  }
+`;
+
 const LandingPage = props => {
   return (
-    <div className="bg-image"
+    <Container className="bg-image"
       style={{
         background: `url(${landingBackground})`
       }}>
-      <div>
+      <Content>
         <HeaderStyle>
           <LandingNav />
         </HeaderStyle>
 
         <Main />
-      </div>
+      </Content>
 
-      <footer>
+      <FooterStyle>
         <p>Copyright 2019. Local Park Passport</p>
-      </footer>
-    </div>
+      </FooterStyle>
+    </Container>
   );
 };
 

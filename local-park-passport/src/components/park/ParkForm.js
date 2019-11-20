@@ -55,21 +55,25 @@ export default function ParkForm(props) {
     setPark({ ...park, country: val });
   };
   const selectRegion = val => {
-    setPark({ ...park, city: val });
+    setPark({ ...park, region: val });
   };
 
   const submitForm = e => {
     e.preventDefault();
     props.addNewPark(park);
-    // props.setState({
-    //   name: "",
-    //   description: "",
-    //   country: "",
-    //   region: ""
-    // });
+
+    // substitutes 'city' for 'region' for backend congruity
+    const replacements = { region: "city" };
+    let replacedItems = Object.keys(park).map(key => {
+      const newKey = replacements[key] || key;
+      return { [newKey]: park[key] };
+    });
+    const parkModified = replacedItems.reduce((a, b) =>
+      Object.assign({}, a, b)
+    );
 
     axios
-      .post("https://park-pp.herokuapp.com/parks", park)
+      .post("https://park-pp.herokuapp.com/parks", parkModified)
       .then(response => {
         console.log(response.data);
       })

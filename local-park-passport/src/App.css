@@ -92,3 +92,11 @@ body {
       background-position: center;
       background-size: cover;
 }
+
+#home-park-list {
+  display: none;
+}
+
+.home-list-display {
+  display: unset;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Input, Button } from 'reactstrap'
 import styled from 'styled-components'
 
@@ -33,7 +33,18 @@ const SearchCon = styled.div`
   }
 `;
 
-const Main = ({ handleChange, handleSubmit }) => {
+const Main = ({ handleChange, homeSearch }) => {
+
+  // homeParkList.style.display = "unset" 
+
+  const handleClick = evt => {
+    evt.preventDefault();
+    const homeParkList = document.querySelector("#home-park-list")
+
+    homeSearch < 1 ? console.log("Please enter a search input!") : homeParkList.style.display = "unset";
+    
+    console.log(homeParkList)  
+  }
 
   return (
     <MainCon>
@@ -47,7 +58,15 @@ const Main = ({ handleChange, handleSubmit }) => {
           placeholder="Find your favorite park"
           onChange={handleChange}
         />
-        <Button color="primary" onSubmit={handleSubmit}>Search</Button>
+
+        <a href="#home-park-list">
+          <Button 
+          className="home-search-button" 
+          color="primary"
+          onClick={(evt) => handleClick(evt)}>
+            Search
+          </Button>
+        </a>
 
       </SearchCon>
 

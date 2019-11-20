@@ -57,10 +57,9 @@ const LandingPage = () => {
 
   const filteredHomeParks = allParks.filter(char => char.name.toLowerCase().includes(homeSearch.toLowerCase()))
 
-  const handleSubmit = evt => {
-    evt.preventDefault();
+  
 
-  }
+  
 
 
 
@@ -76,8 +75,9 @@ const LandingPage = () => {
           <LandingNav />
         </HeaderStyle>
 
-        <Main handleChange={handleChange} handleSubmit={handleSubmit} />
+        <Main handleChange={handleChange} homeSearch={homeSearch}/>
       </Content>
+      
       <div id="home-park-list">
         <HomeParkList filteredHomeParks={filteredHomeParks} />
       </div>

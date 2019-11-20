@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Input, Button } from 'reactstrap'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const MainCon = styled.div`
   margin: 5em auto 0 auto;
@@ -35,8 +36,6 @@ const SearchCon = styled.div`
 
 const Main = ({ handleChange, homeSearch }) => {
 
-  // homeParkList.style.display = "unset" 
-
   const handleClick = evt => {
     evt.preventDefault();
     const homeParkList = document.querySelector("#home-park-list")
@@ -59,14 +58,14 @@ const Main = ({ handleChange, homeSearch }) => {
           onChange={handleChange}
         />
 
-        <a href="#home-park-list">
+        <Link to="/#home-park-list">
           <Button 
           className="home-search-button" 
           color="primary"
           onClick={(evt) => handleClick(evt)}>
             Search
           </Button>
-        </a>
+        </Link>
 
       </SearchCon>
 

@@ -1,19 +1,23 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CountryFinder from "./countryFinder";
+import axios from "axios";
+
 // Styling;
 const StyledDiv = styled.div`
   width: 98%;
   margin: 20px auto;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  justify-content: space-around;
+  border-radius: 0.6em;
+  /* justify-content: space-around; */
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
 
   .park-form {
     padding: 30px;
     width: 80%;
-    margin-top: 5px;
+    margin: 5px auto;
     display: flex;
     flex-direction: column;
     border-radius: 4px;
@@ -24,10 +28,13 @@ const StyledDiv = styled.div`
       border-radius: 5px;
       width: 100px;
       color: white;
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
     }
     .label {
+      text-align: center;
       background-color: #e9e9e9;
       border-radius: 5px;
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3);
     }
   }
 `;
@@ -48,12 +55,27 @@ export default function ParkForm(props) {
     setPark({ ...park, country: val });
   };
   const selectRegion = val => {
-    setPark({ ...park, region: val });
+    setPark({ ...park, city: val });
   };
 
   const submitForm = e => {
     e.preventDefault();
     props.addNewPark(park);
+    // props.setState({
+    //   name: "",
+    //   description: "",
+    //   country: "",
+    //   region: ""
+    // });
+
+    axios
+      .post("https://park-pp.herokuapp.com/parks", park)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   return (
@@ -83,8 +105,7 @@ export default function ParkForm(props) {
         />
 
         <div>
-          {" "}
-          <button classname="parks-button">Add a park</button>{" "}
+          <button className="parks-button">Add a park</button>{" "}
         </div>
       </form>
     </StyledDiv>

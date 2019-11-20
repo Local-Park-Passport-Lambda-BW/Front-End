@@ -116,6 +116,7 @@ const LoginFormWithFormik = withFormik({
   handleSubmit(input, tools) {
     axios
       .post("http://localhost:3300/users/login", input)
+
       .then(res => {
         localStorage.setItem("token", res.data.token);
         console.log(res.data.token);

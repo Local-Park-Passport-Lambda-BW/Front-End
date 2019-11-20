@@ -12,10 +12,10 @@ const ParkListCon = styled.div`
 `;
 
 const ParksList = ({ parkList, setParkList }) => {
-
   useEffect(() => {
     axios
-      .get("http://localhost:3300/parks")
+      .get("http://park-pp.herokuapp.com/parks")
+      // http://localhost:3300/parks
       .then(res => setParkList(res.data))
       .catch(error => console.log(error.message));
   }, [setParkList]);

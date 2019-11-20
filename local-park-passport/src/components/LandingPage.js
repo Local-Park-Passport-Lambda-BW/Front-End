@@ -1,11 +1,10 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from 'styled-components'
 import axios from 'axios';
 
 import LandingNav from "./LandingNav";
 import Main from "./Main";
 import landingBackground from '../images/landscape.jpg'
-import ParkCard from './park/ParkCard';
 import HomeParkList from './HomeParkList'
 
 const HeaderStyle = styled.header`
@@ -29,12 +28,12 @@ const Content = styled.div`
 `;
 
 const FooterStyle = styled.footer`
-background: rgba(255, 255, 255, 0.5);
-width: 100vw;
-height: 50px;
-display: flex;
-align-items: center;
-justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   p {
     margin: 0;
@@ -46,19 +45,26 @@ const LandingPage = () => {
   const [homeSearch, setHomeSearch] = useState("");
   const [allParks, setAllParks] = useState([])
 
-  const handleChange = evt => {
-    setHomeSearch(evt.target.value);
-  }
-
-
   useEffect(() => {
     axios.get("http://localhost:3300/parks")
       .then(res => setAllParks(res.data))
       .catch(err => err.message)
   }, [])
 
+  const handleChange = evt => {
+    setHomeSearch(evt.target.value);
+  }
+
   const filteredHomeParks = allParks.filter(char => char.name.toLowerCase().includes(homeSearch.toLowerCase()))
 
+  const handleSubmit = evt => {
+    evt.preventDefault();
+
+  }
+
+
+
+  // (<HomeParkList filteredHomeParks={filteredHomeParks} />)
 
   return (
     <Container>
@@ -70,9 +76,11 @@ const LandingPage = () => {
           <LandingNav />
         </HeaderStyle>
 
-        <Main handleChange={handleChange} />
+        <Main handleChange={handleChange} handleSubmit={handleSubmit} />
       </Content>
-      <HomeParkList filteredHomeParks={filteredHomeParks} />
+      <div id="home-park-list">
+        <HomeParkList filteredHomeParks={filteredHomeParks} />
+      </div>
 
       <FooterStyle>
         <p>Copyright 2019. Local Park Passport</p>

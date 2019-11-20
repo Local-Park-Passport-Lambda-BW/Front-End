@@ -33,7 +33,7 @@ const SearchCon = styled.div`
   }
 `;
 
-const Main = ({ handleChange }) => {
+const Main = ({ handleChange, handleSubmit }) => {
 
   return (
     <MainCon>
@@ -47,7 +47,7 @@ const Main = ({ handleChange }) => {
           placeholder="Find your favorite park"
           onChange={handleChange}
         />
-        <Button color="primary">Search</Button>
+        <Button color="primary" onSubmit={handleSubmit}>Search</Button>
 
       </SearchCon>
 

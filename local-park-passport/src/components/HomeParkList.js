@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import axios from "axios";
 
 import ParkCard from "./park/ParkCard";
 
@@ -11,7 +10,7 @@ const ParkListCon = styled.div`
   flex-wrap: wrap;
 `;
 
-const HomeParkList = ({ filteredHomeParks}) => {
+const HomeParkList = ({ filteredHomeParks }) => {
 
   return (
     <div>

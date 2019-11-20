@@ -38,19 +38,8 @@ export default function ParkForm(props) {
     name: "",
     description: "",
     country: "",
-    region: ""
+    city: ""
   });
-  // function handleSubmit(input){
-  //   input.preventDefault();
-  // axios
-  //   .post("https://park-pp.herokuapp.com/parks", ParkForm)
-  //   .then(response => {
-  //     console.log(response.data);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
-  // })(ParkForm);
 
   const handleChanges = e => {
     setPark({ ...park, [e.target.name]: e.target.value });
@@ -60,14 +49,15 @@ export default function ParkForm(props) {
     setPark({ ...park, country: val });
   };
   const selectRegion = val => {
-    setPark({ ...park, region: val });
+    setPark({ ...park, city: val });
   };
 
   const submitForm = e => {
     e.preventDefault();
     props.addNewPark(park);
+
     axios
-      .post("https://park-pp.herokuapp.com/parks", ParkForm)
+      .post("https://park-pp.herokuapp.com/parks", park)
       .then(response => {
         console.log(response.data);
       })

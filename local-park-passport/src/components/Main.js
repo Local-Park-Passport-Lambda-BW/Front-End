@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Input, Button } from 'reactstrap'
 import styled from 'styled-components'
-
-import { useLocalStorage } from './hooks/useLocalStorage'
+import axios from 'axios';
 
 const MainCon = styled.div`
   color: #fff;
@@ -37,11 +36,18 @@ const SearchCon = styled.div`
 
 const Main = () => {
 
-  const [homeSearch, setHomeSearch] = useLocalStorage("")
+  const [homeSearch, setHomeSearch] = useState("");
+  const [ allParks, setAllParks ] = useState([])
 
   const handleChange = evt => {
     setHomeSearch(evt.target.value);
   }
+
+  useEffect(() => {
+    axios.get("http://localhost:3300/parks")
+      .then(res => setAllParks(res.data))
+      .catch(err =>  err.message)
+  }, [])
 
   return (
     <MainCon>

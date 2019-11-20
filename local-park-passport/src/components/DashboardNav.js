@@ -1,13 +1,21 @@
-import React from 'react'
-import { Navbar, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import React from "react";
+import {
+  Navbar,
+  Nav,
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem,
+  Button
+} from "reactstrap";
+// import { Link } from 'react-router-dom';
 
-import brandLogo from '../images/LP-logo.png'
-import evansImage from '../images/evans.jpg'
-import SearchForm from './SearchForm'
+import brandLogo from "../images/LP-logo.png";
+import evansImage from "../images/evans.jpg";
+import SearchForm from "./SearchForm";
 
 const DashboardNav = ({ handleChange, onLogOut }) => {
-
   return (
     <div>
       <Navbar color="white" light expand="md">
@@ -30,18 +38,27 @@ const DashboardNav = ({ handleChange, onLogOut }) => {
               <img src={evansImage} alt="profile" className="evansDrop" />
             </DropdownToggle>
             <DropdownMenu className="dropMenu">
-              <DropdownItem tag="a" href="/blah" active>View Profile</DropdownItem>
-              <DropdownItem tag="a" href="/blah">Parks Visited</DropdownItem>
-              <DropdownItem tag="a" href="/blah">Parks Added</DropdownItem>
-              <DropdownItem tag="a" href="/blah">Account Settings</DropdownItem>
-              <DropdownItem className="navLogout" onClick={onLogOut}>Logout</DropdownItem>
+              <DropdownItem tag="a" href="/blah" active>
+                View Profile
+              </DropdownItem>
+              <DropdownItem tag="a" href="/blah">
+                Parks Visited
+              </DropdownItem>
+              <DropdownItem tag="a" href="/blah">
+                Parks Added
+              </DropdownItem>
+              <DropdownItem tag="a" href="/blah">
+                Account Settings
+              </DropdownItem>
+              <DropdownItem className="navLogout" onClick={onLogOut}>
+                Logout
+              </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
         </Nav>
       </Navbar>
-
     </div>
-  )
-}
+  );
+};
 
 export default DashboardNav;

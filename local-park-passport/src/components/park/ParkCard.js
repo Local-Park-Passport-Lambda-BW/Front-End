@@ -57,13 +57,20 @@ const ParkCard = ({ park }) => {
 
   const id = park.id;
 
-  const handleClick = (evt, id) => {
-    console.log(evt, id)
+  const handleClick = (rating, id) => {
+    console.log(rating, id)
+
+    axios.post(`http://localhost:3300/parks/${id}/ratings/demo`, {
+      rating, comment: "", user_id: 1
+    })
+      .then(res => res.data)
+      .catch(err => err.message)
   }
 
-  axios.get(`http://localhost:3300/parks/${id}/ratings`)
-    .then(res => res.data)
-    .catch(err => err.message)
+  useEffect(() => {
+
+  }, [park.rating])
+
 
 
   return (
@@ -79,10 +86,11 @@ const ParkCard = ({ park }) => {
             id="card-stars"
             emptySymbol="fa fa-star-o fa-2x"
             fullSymbol="fa fa-star fa-2x"
-            // fractions={2}
-            onClick={evt => handleClick(evt, id)}
-            initialRating={park.rating}
+            fractions={2}
+            onClick={rating => handleClick(rating, id)}
+            initialRating={park.average_rating}
           />
+          {park.average_rating}
         </div>
       </div>
     </CardCon>

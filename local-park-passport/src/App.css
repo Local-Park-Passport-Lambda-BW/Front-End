@@ -100,3 +100,8 @@ body {
 .home-list-display {
   display: unset;
 }
+
+#card-stars {
+  font-size: 0.5rem;
+  color: #ea430b;
+}

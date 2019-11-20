@@ -84,8 +84,8 @@ const ParkCard = ({park}) => {
       <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
 
       <div className="card-right-con">
-        <h5 className="card-title">{park.title}</h5>
-        <p>{park.body}</p>
+        <h5 className="card-title">{park.name}</h5>
+        <p>{park.description}</p>
 
         <div className="ratingCon">
           <div className="outer-star">

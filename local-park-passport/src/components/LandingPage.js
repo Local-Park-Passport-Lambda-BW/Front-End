@@ -1,8 +1,12 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
+import styled from 'styled-components'
+import axios from 'axios';
+
 import LandingNav from "./LandingNav";
 import Main from "./Main";
 import landingBackground from '../images/landscape.jpg'
-import styled from 'styled-components'
+import ParkCard from './park/ParkCard';
+import HomeParkList from './HomeParkList'
 
 const HeaderStyle = styled.header`
   /* z-index:9999;
@@ -15,7 +19,7 @@ const HeaderStyle = styled.header`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  max-height: 100vh;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
 `;
@@ -37,19 +41,38 @@ justify-content: center;
   }
 `;
 
-const LandingPage = props => {
+const LandingPage = () => {
+
+  const [homeSearch, setHomeSearch] = useState("");
+  const [allParks, setAllParks] = useState([])
+
+  const handleChange = evt => {
+    setHomeSearch(evt.target.value);
+  }
+
+
+  useEffect(() => {
+    axios.get("http://localhost:3300/parks")
+      .then(res => setAllParks(res.data))
+      .catch(err => err.message)
+  }, [])
+
+  const filteredHomeParks = allParks.filter(char => char.name.toLowerCase().includes(homeSearch.toLowerCase()))
+
+
   return (
-    <Container className="bg-image"
-      style={{
-        background: `url(${landingBackground})`
-      }}>
-      <Content>
+    <Container>
+      <Content className="bg-image"
+        style={{
+          background: `url(${landingBackground})`
+        }}>
         <HeaderStyle>
           <LandingNav />
         </HeaderStyle>
 
-        <Main />
+        <Main handleChange={handleChange} />
       </Content>
+      <HomeParkList filteredHomeParks={filteredHomeParks} />
 
       <FooterStyle>
         <p>Copyright 2019. Local Park Passport</p>

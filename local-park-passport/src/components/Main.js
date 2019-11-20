@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Input, Button } from 'reactstrap'
 import styled from 'styled-components'
-import axios from 'axios';
 
 const MainCon = styled.div`
-  color: #fff;
   margin: 5em auto 0 auto;
   max-width: 700px;
 
   h1 {
+  color: #fff;
     font-size: 3rem;
     font-weight: 600;
     margin-bottom: 1.5em;
@@ -34,22 +33,7 @@ const SearchCon = styled.div`
   }
 `;
 
-const Main = () => {
-
-  const [homeSearch, setHomeSearch] = useState("");
-  const [ allParks, setAllParks ] = useState([])
-
-  const handleChange = evt => {
-    setHomeSearch(evt.target.value);
-  }
-
-  
-
-  useEffect(() => {
-    axios.get("http://localhost:3300/parks")
-      .then(res => setAllParks(res.data))
-      .catch(err =>  err.message)
-  }, [])
+const Main = ({ handleChange }) => {
 
   return (
     <MainCon>

@@ -22,8 +22,6 @@ const ParksList = ({ parkList, setParkList }) => {
 
   return (
     <div>
-      <h1 className="intro">Welcome to Parks Page.</h1>
-
       <ParkListCon>
         {parkList.map(park => (
           <ParkCard key={park.id} park={park} />

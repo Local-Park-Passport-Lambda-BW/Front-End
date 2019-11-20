@@ -29,6 +29,7 @@ const CardCon = styled.div`
     width: 400px;
     height: auto;
     margin-left: 1em;
+    padding-right: 0.5em;
 
     .card-title {
       font-size: 1rem;
@@ -62,9 +63,10 @@ const ParkCard = ({park}) => {
 
         <div className="ratingCon">
           <Rating
+          className="card-stars"
             emptySymbol="fa fa-star-o fa-2x"
             fullSymbol="fa fa-star fa-2x"
-            fractions={2}
+            fractions={3}
           />
         </div>
       </div>

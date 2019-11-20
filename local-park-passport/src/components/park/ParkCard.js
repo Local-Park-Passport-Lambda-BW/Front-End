@@ -11,6 +11,7 @@ const CardCon = styled.div`
   border-radius: 0.6em;
   padding: 0.6em;
   margin: 1em;
+  background: white;
 
     img {
       max-width: 100%;

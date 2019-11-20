@@ -1,14 +1,27 @@
 import React from "react";
 import LandingNav from "./LandingNav";
 import Main from "./Main";
+import landingBackground from '../images/landscape.jpg'
+import styled from 'styled-components'
+
+const HeaderStyle = styled.header`
+  /* z-index:9999;
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px); */
+`;
 
 const LandingPage = props => {
   return (
-    <div>
+    <div className="bg-image"
+      style={{
+        background: `url(${landingBackground})`
+      }}>
       <div>
-        <header>
+        <HeaderStyle>
           <LandingNav />
-        </header>
+        </HeaderStyle>
 
         <Main />
       </div>

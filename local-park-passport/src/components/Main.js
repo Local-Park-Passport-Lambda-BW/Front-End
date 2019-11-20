@@ -43,6 +43,8 @@ const Main = () => {
     setHomeSearch(evt.target.value);
   }
 
+  
+
   useEffect(() => {
     axios.get("http://localhost:3300/parks")
       .then(res => setAllParks(res.data))

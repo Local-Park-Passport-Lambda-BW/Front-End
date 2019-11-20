@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { useLocalStorage } from './hooks/useLocalStorage'
 
 const MainCon = styled.div`
-  color: white;
+  color: #fff;
   margin: 5em auto 0 auto;
   max-width: 700px;
 
@@ -45,7 +45,7 @@ const Main = () => {
 
   return (
     <MainCon>
-      <h1>Your best neighborhood parks is closer than you think.</h1>
+      <h1>Your best neighborhood parks are closer than you think.</h1>
 
       <SearchCon>
         <Input

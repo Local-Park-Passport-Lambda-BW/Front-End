@@ -11,8 +11,8 @@ export default function Dashboard(props) {
   
   const [parkList, setParkList] = useState([{
     id: "",
-    name: "Windshall",
-    description: "Some new text not meaning anything for all to see"
+    name: "",
+    description: ""
   }]);
   const [searchValue, setSearchValue] = useLocalStorage("");
 

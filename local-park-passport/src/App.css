@@ -101,6 +101,7 @@ body {
   display: unset;
 }
 
-.card-stars {
+#card-stars {
   font-size: 0.5rem;
+  color: #ea430b;
 }

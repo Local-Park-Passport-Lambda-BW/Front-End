@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import parkImage from '../../images/bridge.jpg'
 import Rating from 'react-rating'
+import axios from 'axios'
 
 // Styles
 const CardCon = styled.div`
@@ -52,7 +53,19 @@ const CardCon = styled.div`
 
 `;
 
-const ParkCard = ({park}) => {
+const ParkCard = ({ park }) => {
+
+  const id = park.id;
+
+  const handleClick = (evt, id) => {
+    console.log(evt, id)
+  }
+
+  axios.get(`http://localhost:3300/parks/${id}/ratings`)
+    .then(res => res.data)
+    .catch(err => err.message)
+
+
   return (
     <CardCon className="cardCon">
       <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
@@ -63,10 +76,12 @@ const ParkCard = ({park}) => {
 
         <div className="ratingCon">
           <Rating
-          className="card-stars"
+            id="card-stars"
             emptySymbol="fa fa-star-o fa-2x"
             fullSymbol="fa fa-star fa-2x"
-            fractions={3}
+            // fractions={2}
+            onClick={evt => handleClick(evt, id)}
+            initialRating={park.rating}
           />
         </div>
       </div>

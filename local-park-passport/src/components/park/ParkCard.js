@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import parkImage from '../../images/bridge.jpg'
+import Rating from 'react-rating'
 
 // Styles
 const CardCon = styled.div`
@@ -11,6 +12,7 @@ const CardCon = styled.div`
   border-radius: 0.6em;
   padding: 0.6em;
   margin: 1em;
+  background: white;
 
     img {
       max-width: 100%;
@@ -43,36 +45,7 @@ const CardCon = styled.div`
     }
 
     .ratingCon {
-
-      .outer-star {
-        position: relative;
-      }
-
-      .inner-star {
-        position: absolute;
-        top: 0;
-        left: 0;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 0;
-      }
-
-      .outer-star::before {
-        content: "\f005 \f005 \f005 \f005 \f005";
-        font-family: "Font Awesome Free";
-        font-weight: 200;
-        color: #ccc;
-      }
-      .inner-star::before {
-        content: "\f005 \f005 \f005 \f005 \f005";
-        font-family: "Font Awesome Free";
-        font-weight: 200;
-        color: #f8ce0b;
-      }
-
-      .checked{
-        color: orange;
-      }
+      
     }
   }
 
@@ -88,9 +61,11 @@ const ParkCard = ({park}) => {
         <p>{park.description}</p>
 
         <div className="ratingCon">
-          <div className="outer-star">
-            <div className="inner-star"></div>
-          </div>
+          <Rating
+            emptySymbol="fa fa-star-o fa-2x"
+            fullSymbol="fa fa-star fa-2x"
+            fractions={2}
+          />
         </div>
       </div>
     </CardCon>

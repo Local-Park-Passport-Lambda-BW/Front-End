@@ -27,9 +27,9 @@ const DashboardNav = ({ handleChange, onLogOut }) => {
         </Nav>
         <Nav className="ml-auto navCon" navbar>
           <NavItem>
-            <Button color="success" size="sm" className="addParkButton">
-              Add A Park
-            </Button>{" "}
+            <Link to="/dashboard/add-park">
+              <Button color="success" size="sm" className="addParkButton">Add A Park</Button>{' '}
+            </Link> 
           </NavItem>
 
           <UncontrolledDropdown setActiveFromChild>

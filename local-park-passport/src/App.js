@@ -5,6 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import LandingPage from "./components/LandingPage";
+
 function App() {
   return (
     <div className="App">

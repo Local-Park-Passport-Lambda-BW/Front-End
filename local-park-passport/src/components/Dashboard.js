@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import { Route } from "react-router-dom";
-
 import DashboardNav from "./DashboardNav";
 import ParkForm from "./park/ParkForm";
 import ParksList from "./park/ParksList";
@@ -43,7 +41,11 @@ export default function Dashboard(props) {
     <div className="Parks">
       <DashboardNav handleChange={handleChange} onLogOut={onLogOut} />
       <ParkForm addNewPark={addNewPark} />
-      <ParksList parkList={filteredParks} setParkList={setParkList} />
+      <ParksList
+        parkList={filteredParks}
+        setParkList={setParkList}
+        history={props.history}
+      />
 
       {/* <Route exact path="/dashboard/add-park" component={ParkForm} /> */}
       {/* we are going to pass a function down as a prop */}

@@ -75,9 +75,16 @@ const CardCon = styled.div`
 
 const ParkCard = ({ park }) => {
 
-  const [ comment, setComment ] = useState("")
-
   const id = park.id;
+
+  const [ comment, setComment ] = useState("");
+
+  const handleComment = () => {
+    axios.post(`https://park-pp.herokuapp.com/parks/1/demo/ratings`, )
+      .then()
+      .catch()
+  }
+
 
   const handleClick = (rating, id) => {
     console.log(rating, id)

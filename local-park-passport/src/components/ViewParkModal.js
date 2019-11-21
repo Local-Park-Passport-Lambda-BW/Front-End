@@ -1,17 +1,19 @@
-import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
-import Rating from 'react-rating'
+import React, { useState } from "react";
+import { Modal, ModalHeader, ModalBody, Input } from "reactstrap";
+import Rating from "react-rating";
 
-const ViewParkModal = (props) => {
-  const { park, className, parkId, handleClick} = props;
+const ViewParkModal = props => {
+  const { park, className, parkId, handleClick } = props;
 
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
-  
+
   return (
     <div>
-      <button className="viewButton" onClick={toggle}>view</button>
+      <button className="viewButton" onClick={toggle}>
+        view
+      </button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>{park.name}</ModalHeader>
         <ModalBody>
@@ -28,21 +30,24 @@ const ViewParkModal = (props) => {
             fractions={2}
             onClick={rating => handleClick(rating, parkId)}
             initialRating={park.average_rating}
-          />{` `}
-          {park.average_rating}{` `}
+          />
+          {` `}
+          {park.average_rating}
+          {` `}
           <button className="reviewButton">Add a Review</button>
-          <Input type="textarea" name="comment" id="comment" placeholder="Leave a comment..." value={park.comment} />
+          <Input
+            type="textarea"
+            name="text"
+            id="exampleText"
+            placeholder="Leave a comment..."
+          />
           <p>{park.comment}</p>
 
           <button color="success">Add Rating</button>
         </ModalBody>
-        {/* <ModalFooter>
-          <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
-          <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter> */}
       </Modal>
     </div>
-  )
-}
+  );
+};
 
-export default ViewParkModal
+export default ViewParkModal;

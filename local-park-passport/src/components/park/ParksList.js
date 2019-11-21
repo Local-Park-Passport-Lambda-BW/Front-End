@@ -11,8 +11,7 @@ const ParkListCon = styled.div`
   flex-wrap: wrap;
 `;
 
-const ParksList = ({ parkList, setParkList, handleChange}) => {
-
+const ParksList = ({ parkList, setParkList, history }) => {
   useEffect(() => {
     axios
       .get("http://park-pp.herokuapp.com/parks")
@@ -27,6 +26,7 @@ const ParksList = ({ parkList, setParkList, handleChange}) => {
         {parkList.map(park => (
           <ParkCard
             key={park.id}
+            history={history}
             park={park}
             parkList={parkList}
             setParkList={setParkList}

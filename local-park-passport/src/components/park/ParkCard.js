@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import styled from 'styled-components'
-import Rating from 'react-rating'
-import axios from 'axios'
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import Rating from "react-rating";
+import axios from "axios";
 import getToken from "../GetToken";
-
-import parkImage from '../../images/bridge.jpg'
-import ViewParkModal from '../ViewParkModal'
+import parkImage from "../../images/bridge.jpg";
+import ViewParkModal from "../ViewParkModal";
 
 // Styles
 const CardCon = styled.div`
@@ -44,7 +43,7 @@ const CardCon = styled.div`
       justify-content: space-between;
       align-items: center;
       margin-bottom: 0.6em;
-      
+
       .card-title {
         font-size: 1rem;
         font-weight: 600;
@@ -54,14 +53,13 @@ const CardCon = styled.div`
 
       .viewButton {
         color: #fff;
-        background: #2B2121;
-        border: 1px solid #2B2121;
+        background: #2b2121;
+        border: 1px solid #2b2121;
         font-size: 0.7rem;
         font-weight: 500;
         width: auto;
       }
     }
-
 
     p {
       font-size: 0.8rem;
@@ -74,26 +72,19 @@ const CardCon = styled.div`
 `;
 
 const ParkCard = props => {
-  const { park, history } = props;
+  const { park, setParkList } = props;
+  const [isDeleted, setIsDeleted] = useState(false);
+  useEffect(() => {
+    axios
+      .get("http://park-pp.herokuapp.com/parks")
+      // http://localhost:3300/parks
+      .then(res => {
+        setParkList(res.data);
+      })
+      .catch(error => console.log(error.message));
+  }, [isDeleted, setParkList]);
+
   const id = park.id;
-
-  const [ userRating, setUserRating ] = useState({
-    comment: "",
-    rating: 0
-  });
-
-  const handleRatingChange = evt => {
-    debugger
-    setUserRating({ ...userRating, [evt.target.name]: evt.target.value})
-  }
-
-
-  const submitRating = () => {
-    axios.post(`https://park-pp.herokuapp.com/parks/${id}/ratings`)
-      .then(res => {console.log(res)})
-      .catch()
-  }
-
 
   const handleClick = (rating, parkId) => {
     console.log(rating, parkId);
@@ -107,19 +98,11 @@ const ParkCard = props => {
       .catch(err => err.message);
   };
 
-  // console.log(park);
-  // const newId = parkList.id;
-  // useEffect(() => {}, [park.rating]);
-
-  // useEffect(() => {
-  // }, []);
-  console.log(props);
   const deletePark = (event, id) => {
-    console.log(event);
     event.preventDefault();
     getToken()
       .delete(`https://park-pp.herokuapp.com/parks/${id}`)
-      .then(response => history.location.reload(true))
+      .then(() => setIsDeleted(true))
       .catch(error => console.log(error.message));
   };
 
@@ -134,8 +117,12 @@ const ParkCard = props => {
       <div className="card-right-con">
         <div className="cardHeader">
           <h5 className="card-title">{park.name}</h5>
-          <ViewParkModal park={park} handleClick={handleClick}
-            parkId={id} />
+          <ViewParkModal
+            isDeleted={isDeleted}
+            park={park}
+            handleClick={handleClick}
+            parkId={id}
+          />
         </div>
         <p>{park.description}</p>
 

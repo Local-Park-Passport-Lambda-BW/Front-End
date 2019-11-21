@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import styled from 'styled-components'
 
 const ViewParkModal = (props) => {
-  const { buttonLabel, className } = props;
+  const { className } = props;
+
+  console.log(props)
 
   const [modal, setModal] = useState(false);
 
@@ -10,16 +13,24 @@ const ViewParkModal = (props) => {
   
   return (
     <div>
-      <Button color="danger" onClick={toggle}>{buttonLabel}</Button>
+      <Button color="danger" onClick={toggle}>Launch Modal</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Park Title</ModalHeader>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          <p>Park Description</p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+          <h6>Features</h6>
+
+          <p>Park Ratings</p>
+          <p>Park Average Rating</p>
+          <button className="reviewButton">Add a Review</button>
+          <Input type="textarea" name="text" id="exampleText" placeholder="Leave a comment..."/>
         </ModalBody>
-        <ModalFooter>
+        {/* <ModalFooter>
           <Button color="primary" onClick={toggle}>Do Something</Button>{' '}
           <Button color="secondary" onClick={toggle}>Cancel</Button>
-        </ModalFooter>
+        </ModalFooter> */}
       </Modal>
     </div>
   )

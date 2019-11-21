@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import parkImage from '../../images/bridge.jpg'
 import Rating from 'react-rating'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+
+import parkImage from '../../images/bridge.jpg'
 
 // Styles
 const CardCon = styled.div`
@@ -36,11 +38,29 @@ const CardCon = styled.div`
     margin-left: 1em;
     padding-right: 0.5em;
 
-    .card-title {
-      font-size: 1rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
+    .cardHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6em;
+      
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        margin-bottom: 0;
+      }
+
+      .viewButton {
+        color: #fff;
+        background: #2B2121;
+        border: 1px solid #2B2121;
+        font-size: 0.7rem;
+        font-weight: 500;
+        width: auto;
+      }
     }
+
 
     p {
       font-size: 0.8rem;
@@ -48,10 +68,6 @@ const CardCon = styled.div`
 
     button {
       width: 100px;
-    }
-
-    .ratingCon {
-      
     }
   }
 
@@ -88,7 +104,10 @@ const ParkCard = ({ park }) => {
       <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
 
       <div className="card-right-con">
-        <h5 className="card-title">{park.name}</h5>
+        <div className="cardHeader">
+          <h5 className="card-title">{park.name}</h5>
+          <button className="viewButton">view</button>
+        </div>
         <p>{park.description}</p>
 
         <div className="ratingCon">

@@ -107,7 +107,7 @@ const ParkCard = ({ park }) => {
       <div className="card-right-con">
         <div className="cardHeader">
           <h5 className="card-title">{park.name}</h5>
-          <ViewParkModal />
+          <ViewParkModal park={park}/>
         </div>
         <p>{park.description}</p>
 

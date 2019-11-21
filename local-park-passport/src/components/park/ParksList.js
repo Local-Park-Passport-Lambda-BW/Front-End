@@ -11,7 +11,7 @@ const ParkListCon = styled.div`
   flex-wrap: wrap;
 `;
 
-const ParksList = ({ parkList, setParkList}) => {
+const ParksList = ({ parkList, setParkList, handleChange}) => {
 
   useEffect(() => {
     axios
@@ -19,7 +19,7 @@ const ParksList = ({ parkList, setParkList}) => {
       // http://localhost:3300/parks
       .then(res => setParkList(res.data))
       .catch(error => console.log(error.message));
-  }, [setParkList]);
+  }, []);
 
   return (
     <div>

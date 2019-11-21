@@ -43,7 +43,7 @@ export default function Dashboard(props) {
     <div className="Parks">
       <DashboardNav handleChange={handleChange} onLogOut={onLogOut} />
       <ParkForm addNewPark={addNewPark} />
-      <ParksList parkList={filteredParks} setParkList={setParkList} />
+      <ParksList parkList={filteredParks} setParkList={setParkList}/>
 
       {/* <Route exact path="/dashboard/add-park" component={ParkForm} /> */}
       {/* we are going to pass a function down as a prop */}

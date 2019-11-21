@@ -77,23 +77,31 @@ const ParkCard = props => {
   const { park, history } = props;
   const id = park.id;
 
-  const [ comment, setComment ] = useState("");
+  const [ userRating, setUserRating ] = useState({
+    comment: "",
+    rating: 0
+  });
 
-  const handleComment = () => {
-    axios.post(`https://park-pp.herokuapp.com/parks/1/demo/ratings`, )
-      .then()
+  const handleRatingChange = evt => {
+    debugger
+    setUserRating({ ...userRating, [evt.target.name]: evt.target.value})
+  }
+
+
+  const submitRating = () => {
+    axios.post(`https://park-pp.herokuapp.com/parks/${id}/ratings`)
+      .then(res => {console.log(res)})
       .catch()
   }
 
 
-  const handleClick = (rating, id) => {
-    console.log(rating, id);
-
-    axios
-      .post(`https://park-pp.herokuapp.com/parks/${id}/ratings/demo`, {
+  const handleClick = (rating, parkId) => {
+    console.log(rating, parkId);
+    debugger
+    getToken()
+      .post(`https://park-pp.herokuapp.com/parks/${parkId}/ratings/`, {
         rating,
         comment: "",
-        user_id: 1
       })
       .then(res => res.data)
       .catch(err => err.message);
@@ -101,7 +109,7 @@ const ParkCard = props => {
 
   // console.log(park);
   // const newId = parkList.id;
-  useEffect(() => {}, [park.rating]);
+  // useEffect(() => {}, [park.rating]);
 
   // useEffect(() => {
   // }, []);

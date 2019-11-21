@@ -11,7 +11,8 @@ const ParkListCon = styled.div`
   flex-wrap: wrap;
 `;
 
-const ParksList = ({ parkList, setParkList }) => {
+const ParksList = ({ parkList, setParkList}) => {
+
   useEffect(() => {
     axios
       .get("http://park-pp.herokuapp.com/parks")

@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Rating from 'react-rating'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
 
 import parkImage from '../../images/bridge.jpg'
 import ViewParkModal from '../ViewParkModal'
@@ -76,6 +75,8 @@ const CardCon = styled.div`
 
 const ParkCard = ({ park }) => {
 
+  const [ comment, setComment ] = useState("")
+
   const id = park.id;
 
   const handleClick = (rating, id) => {
@@ -107,7 +108,8 @@ const ParkCard = ({ park }) => {
       <div className="card-right-con">
         <div className="cardHeader">
           <h5 className="card-title">{park.name}</h5>
-          <ViewParkModal park={park}/>
+          <ViewParkModal park={park} handleClick={handleClick}
+            parkId={id} />
         </div>
         <p>{park.description}</p>
 
@@ -117,7 +119,7 @@ const ParkCard = ({ park }) => {
             emptySymbol="fa fa-star-o fa-2x"
             fullSymbol="fa fa-star fa-2x"
             fractions={2}
-            onClick={rating => handleClick(rating, id)}
+            onClick={() => alert("Please view park in order to rate")}
             initialRating={park.average_rating}
           />
           {park.average_rating}

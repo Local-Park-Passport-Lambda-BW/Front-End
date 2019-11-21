@@ -15,12 +15,16 @@ const CardCon = styled.div`
   margin: 1em;
   background: white;
 
-    img {
-      max-width: 100%;
-      height: auto;
-      align-self: center;
-      border-radius: 0.2em;
-    }
+  &:hover {
+    transform: scale(1.04);
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    align-self: center;
+    border-radius: 0.2em;
+  }
 
   .card-right-con {
     display: flex;
@@ -70,6 +74,12 @@ const ParkCard = ({ park }) => {
   useEffect(() => {
 
   }, [park.rating])
+
+
+  // ROUNDING IT UP THE AVERAGE RATING TO DISPLAY ON THE CARD
+  // RETURNS NAN
+  // const roundedAverageRating = Math.round(park.average_rating * 10) / 10;
+  // console.log(roundedAverageRating);
 
 
 

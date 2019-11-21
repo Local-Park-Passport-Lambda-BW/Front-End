@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
-import styled from 'styled-components'
 
 const ViewParkModal = (props) => {
   const { className } = props;
@@ -13,7 +12,7 @@ const ViewParkModal = (props) => {
   
   return (
     <div>
-      <Button color="danger" onClick={toggle}>Launch Modal</Button>
+      <button className="viewButton" onClick={toggle}>view</button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>Park Title</ModalHeader>
         <ModalBody>

@@ -5,6 +5,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import parkImage from '../../images/bridge.jpg'
+import ViewParkModal from '../ViewParkModal'
 
 // Styles
 const CardCon = styled.div`
@@ -106,7 +107,7 @@ const ParkCard = ({ park }) => {
       <div className="card-right-con">
         <div className="cardHeader">
           <h5 className="card-title">{park.name}</h5>
-          <button className="viewButton">view</button>
+          <ViewParkModal />
         </div>
         <p>{park.description}</p>
 

@@ -3,7 +3,6 @@ import styled from "styled-components";
 import axios from "axios";
 
 import ParkCard from "./ParkCard";
-import ViewParkModal from "../ViewParkModal";
 
 // Styles
 const ParkListCon = styled.div`
@@ -24,7 +23,6 @@ const ParksList = ({ parkList, setParkList }) => {
   return (
     <div>
       <ParkListCon>
-        <ViewParkModal />
         {parkList.map(park => (
           <ParkCard key={park.id} park={park} parkList={parkList} setParkList={setParkList}/>
         ))}

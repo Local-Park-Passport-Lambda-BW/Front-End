@@ -25,7 +25,12 @@ const ParksList = ({ parkList, setParkList}) => {
     <div>
       <ParkListCon>
         {parkList.map(park => (
-          <ParkCard key={park.id} park={park} parkList={parkList} setParkList={setParkList}/>
+          <ParkCard
+            key={park.id}
+            park={park}
+            parkList={parkList}
+            setParkList={setParkList}
+          />
         ))}
       </ParkListCon>
     </div>

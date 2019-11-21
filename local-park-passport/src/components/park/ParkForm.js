@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import CountryFinder from "./countryFinder";
-import axios from "axios";
+// import axios from "axios";
+import GetToken from "../GetToken";
 
 // Styling;
 const StyledDiv = styled.div`
@@ -72,7 +73,7 @@ export default function ParkForm(props) {
       Object.assign({}, a, b)
     );
 
-    axios
+    GetToken()
       .post("https://park-pp.herokuapp.com/parks", parkModified)
       .then(response => {
         console.log(response.data);

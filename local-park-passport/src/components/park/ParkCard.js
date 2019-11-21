@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Rating from 'react-rating'
 import axios from 'axios'
+import getToken from "../GetToken";
 
 import parkImage from '../../images/bridge.jpg'
 import ViewParkModal from '../ViewParkModal'
@@ -10,7 +11,7 @@ import ViewParkModal from '../ViewParkModal'
 const CardCon = styled.div`
   display: flex;
   width: 400px;
-  border: 1px solid #E2E2E2;
+  border: 1px solid #e2e2e2;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
   border-radius: 0.6em;
   padding: 0.6em;
@@ -70,11 +71,10 @@ const CardCon = styled.div`
       width: 100px;
     }
   }
-
 `;
 
-const ParkCard = ({ park }) => {
-
+const ParkCard = props => {
+  const { park, history } = props;
   const id = park.id;
 
   const [ comment, setComment ] = useState("");
@@ -87,30 +87,41 @@ const ParkCard = ({ park }) => {
 
 
   const handleClick = (rating, id) => {
-    console.log(rating, id)
+    console.log(rating, id);
 
-    axios.post(`http://localhost:3300/parks/${id}/ratings/demo`, {
-      rating, comment: "", user_id: 1
-    })
+    axios
+      .post(`https://park-pp.herokuapp.com/parks/${id}/ratings/demo`, {
+        rating,
+        comment: "",
+        user_id: 1
+      })
       .then(res => res.data)
-      .catch(err => err.message)
-  }
+      .catch(err => err.message);
+  };
 
-  useEffect(() => {
+  // console.log(park);
+  // const newId = parkList.id;
+  useEffect(() => {}, [park.rating]);
 
-  }, [park.rating])
-
-
-  // ROUNDING IT UP THE AVERAGE RATING TO DISPLAY ON THE CARD
-  // RETURNS NAN
-  // const roundedAverageRating = Math.round(park.average_rating * 10) / 10;
-  // console.log(roundedAverageRating);
-
-
+  // useEffect(() => {
+  // }, []);
+  console.log(props);
+  const deletePark = (event, id) => {
+    console.log(event);
+    event.preventDefault();
+    getToken()
+      .delete(`https://park-pp.herokuapp.com/parks/${id}`)
+      .then(response => history.location.reload(true))
+      .catch(error => console.log(error.message));
+  };
 
   return (
     <CardCon className="cardCon">
-      <img src={parkImage} alt="bridge-park" style={{ width: "120px", height: "120px" }} />
+      <img
+        src={parkImage}
+        alt="bridge-park"
+        style={{ width: "120px", height: "120px" }}
+      />
 
       <div className="card-right-con">
         <div className="cardHeader">
@@ -131,9 +142,17 @@ const ParkCard = ({ park }) => {
           />
           {park.average_rating}
         </div>
+        <div>
+          <button
+            onClick={event => deletePark(event, park.id)}
+            className="parks-button"
+          >
+            Delete park
+          </button>{" "}
+        </div>
       </div>
     </CardCon>
-  )
-}
+  );
+};
 
-export default ParkCard
+export default ParkCard;

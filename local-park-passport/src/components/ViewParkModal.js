@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import Rating from 'react-rating'
 
 const ViewParkModal = (props) => {
-  const { park, className } = props;
+  const { park, className, parkId, handleClick } = props;
 
   const [modal, setModal] = useState(false);
 
@@ -20,10 +21,20 @@ const ViewParkModal = (props) => {
 
           <h6>Features</h6>
 
-          <p>Park Ratings</p>
-          <p>{park.average_rating}</p>
+          <Rating
+            id="card-stars"
+            emptySymbol="fa fa-star-o fa-2x"
+            fullSymbol="fa fa-star fa-2x"
+            fractions={2}
+            onClick={rating => handleClick(rating, parkId)}
+            initialRating={park.average_rating}
+          />{` `}
+          {park.average_rating}{` `}
           <button className="reviewButton">Add a Review</button>
           <Input type="textarea" name="text" id="exampleText" placeholder="Leave a comment..."/>
+          <p>{park.comment}</p>
+
+          <button color="success">Add Comment</button>
         </ModalBody>
         {/* <ModalFooter>
           <Button color="primary" onClick={toggle}>Do Something</Button>{' '}

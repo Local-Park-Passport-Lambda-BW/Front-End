@@ -82,9 +82,6 @@ export default function ParkForm(props) {
         console.log(err);
       });
   };
-  const deleteForm = e => {
-    GetToken().delete("https://park-pp.herokuapp.com/parks");
-  };
 
   return (
     <StyledDiv>

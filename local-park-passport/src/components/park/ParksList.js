@@ -11,22 +11,26 @@ const ParkListCon = styled.div`
   flex-wrap: wrap;
 `;
 
-const ParksList = ({ parkList, setParkList }) => {
-
+const ParksList = ({ parkList, setParkList, history }) => {
   useEffect(() => {
     axios
-      .get("http://localhost:3300/parks")
+      .get("http://park-pp.herokuapp.com/parks")
+      // http://localhost:3300/parks
       .then(res => setParkList(res.data))
       .catch(error => console.log(error.message));
-  }, [setParkList]);
+  }, []);
 
   return (
     <div>
-      <h1 className="intro">Welcome to Parks Page.</h1>
-
       <ParkListCon>
         {parkList.map(park => (
-          <ParkCard key={park.id} park={park} />
+          <ParkCard
+            key={park.id}
+            history={history}
+            park={park}
+            parkList={parkList}
+            setParkList={setParkList}
+          />
         ))}
       </ParkListCon>
     </div>

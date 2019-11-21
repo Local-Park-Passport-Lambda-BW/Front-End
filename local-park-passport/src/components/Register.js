@@ -171,14 +171,13 @@ const RegistrationFormWithFormik = withFormik({
     // from Lisa to prevent password confirmation from being returned
     // const { password_confirmation, ...rest } = formValues;
     // console.log("rest", rest);
-
     axios
-      .post("http://localhost:3300/users/register", input)
+      .post("https://park-pp.herokuapp.com/users/register", input)
+      //https://park-pp.herokuapp.com/users/register
+      // http://localhost:3300/users/register
       // https://reqres.in/api/users/
       // https://reqres.in/api/users/
-      // http://localhost:3300/user/register
-      // https://parks-development-api.herokuapp.com/
-      // https://park-pp.herokuapp.com/users/register
+
       .then(res => {
         console.log(res.data);
         tools.resetForm();

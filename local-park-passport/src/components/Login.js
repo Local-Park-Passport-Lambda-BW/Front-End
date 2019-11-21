@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import axios from "axios";
 import styled from "styled-components";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
-// import UserList from "../components/UserList";
 
 // Styling
 
@@ -114,10 +113,16 @@ const LoginFormWithFormik = withFormik({
   }),
 
   handleSubmit(input, tools) {
+    console.log(tools);
     axios
-      .post("http://localhost:3300/users/login", input)
+      .post("https://park-pp.herokuapp.com/users/login", input)
+
       .then(res => {
+        // localStorage.setItem("token", `${res.data.token}`);
+        // let id = decode(res.data.token).subject;
+
         localStorage.setItem("token", res.data.token);
+        tools.props.history.push("/dashboard");
         console.log(res.data.token);
         tools.resetForm();
       })

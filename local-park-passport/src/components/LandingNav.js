@@ -1,28 +1,55 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Nav, NavItem, Button } from 'reactstrap';
+
+import brandLogo from '../images/LP-logo.png'
 
 const StyledDiv = styled.div`
-  width: 61.8%;
-  margin: 0 auto;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  /* border: 1px solid blue; */
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  /* a {
-    padding: 5px;
-  } */
+  justify-content: space-between;
+  width: 100vw;
+  background: white;
+  padding: 1em;
+  align-items: center;
+  padding-top: 1em;
+
+  a {
+    color: #3e3e3e;
+  }
+
+  .rightNav {
+    display: flex;
+    align-items: center;
+    margin-right: 2em;
+
+    a {
+      padding-left: 2em;
+    }
+  }
 `;
 
 const LandingNav = () => {
 
   return (
     <StyledDiv>
-      <Link to={`/`}>Home</Link>
-      <Link to={`/Login`}>Sign in</Link>
-      <Link to={`/register`}>Sign up</Link>
+      <Nav className="logoCon">
+        <Link to={`/`}>
+          <img src={brandLogo} alt="brand logo" className="logo" />
+        </Link>
+        <p>Local Park Passport</p>
+      </Nav>
+
+      <Nav className="rightNav">
+        <NavItem>
+          <Link to={`/Login`}>Sign in</Link>
+        </NavItem>
+        <NavItem>
+          <Link to={`/register`}>
+            <Button color="success">Sign up</Button>
+          </Link>
+        </NavItem>
+      </Nav>
     </StyledDiv>
   );
 };

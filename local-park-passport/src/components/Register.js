@@ -171,7 +171,6 @@ const RegistrationFormWithFormik = withFormik({
     // from Lisa to prevent password confirmation from being returned
     // const { password_confirmation, ...rest } = formValues;
     // console.log("rest", rest);
-
     axios
       .post("https://park-pp.herokuapp.com/users/register", input)
       //https://park-pp.herokuapp.com/users/register

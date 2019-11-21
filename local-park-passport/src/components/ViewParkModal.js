@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import { Modal, ModalHeader, ModalBody, Input } from "reactstrap";
 import Rating from "react-rating";
 
@@ -44,7 +43,7 @@ const ViewParkModal = props => {
           />
           <p>{park.comment}</p>
 
-          <button color="success">Add Comment</button>
+          <button color="success">Add Rating</button>
         </ModalBody>
       </Modal>
     </div>

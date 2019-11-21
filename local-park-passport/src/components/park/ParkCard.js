@@ -74,6 +74,8 @@ const CardCon = styled.div`
 const ParkCard = props => {
   const { park, setParkList } = props;
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isRated, setIsRated] = useState(false)
+
   useEffect(() => {
     axios
       .get("http://park-pp.herokuapp.com/parks")
@@ -82,20 +84,19 @@ const ParkCard = props => {
         setParkList(res.data);
       })
       .catch(error => console.log(error.message));
-  }, [isDeleted, setParkList]);
+  }, [isDeleted, setParkList, isRated]);
 
   const id = park.id;
 
-  const handleClick = (rating, id) => {
-    console.log(rating, id);
-
-    axios
-      .post(`https://park-pp.herokuapp.com/parks/${id}/ratings/demo`, {
+  const handleClick = (rating, parkId) => {
+    console.log(rating, parkId);
+    debugger
+    getToken()
+      .post(`https://park-pp.herokuapp.com/parks/${parkId}/ratings/`, {
         rating,
         comment: "",
-        user_id: 1
       })
-      .then(res => res.data)
+      .then(() => setIsRated(true))
       .catch(err => err.message);
   };
 

@@ -74,6 +74,8 @@ const CardCon = styled.div`
 const ParkCard = props => {
   const { park, setParkList } = props;
   const [isDeleted, setIsDeleted] = useState(false);
+  const [isRated, setIsRated] = useState(false)
+
   useEffect(() => {
     axios
       .get("http://park-pp.herokuapp.com/parks")
@@ -82,7 +84,7 @@ const ParkCard = props => {
         setParkList(res.data);
       })
       .catch(error => console.log(error.message));
-  }, [isDeleted, setParkList]);
+  }, [isDeleted, setParkList, isRated]);
 
   const id = park.id;
 
@@ -94,7 +96,7 @@ const ParkCard = props => {
         rating,
         comment: "",
       })
-      .then(res => res.data)
+      .then(() => setIsRated(true))
       .catch(err => err.message);
   };
 

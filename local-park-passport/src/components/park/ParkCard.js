@@ -137,7 +137,6 @@ const ParkCard = props => {
             onClick={() => alert("Please view park in order to rate")}
             initialRating={park.average_rating}
           />
-          {park.average_rating}
         </div>
         <div>
           <button

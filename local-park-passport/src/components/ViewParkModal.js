@@ -32,7 +32,6 @@ const ViewParkModal = props => {
             initialRating={park.average_rating}
           />
           {` `}
-          {park.average_rating}
           {` `}
           <button className="reviewButton">Add a Review</button>
           <Input
